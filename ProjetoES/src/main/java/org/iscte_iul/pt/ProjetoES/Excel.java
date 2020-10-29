@@ -21,7 +21,7 @@ public class Excel
 
 	    int cols = 0; // No of columns
 	    int tmp = 0;
-
+//alterei
 	    // This trick ensures that we get the data properly even if it doesn't start from first few rows
 	    for(int i = 0; i < 10 || i < rows; i++) {
 	        row = sheet.getRow(i);
