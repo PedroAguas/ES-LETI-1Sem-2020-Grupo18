@@ -35,7 +35,7 @@ public class GUI {
 	public GUI(){
 		frame = new JFrame ("Find Images");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); 
-		frame.setLayout(new BorderLayout()); 
+		frame.setLayout(new BorderLayout());
 		configurationFrame();
 		frame.setSize(700, 450);
 	}	
@@ -44,6 +44,8 @@ public class GUI {
 		frame.setVisible(true);
 	}
 
+	
+	
 	private void configurationFrame(){
 
 		ArrayList<String> listaWorkers = new ArrayList<>();
@@ -79,19 +81,30 @@ public class GUI {
 
 		frame.add (imagens, BorderLayout.EAST); 
 
+	//Parte onde o excel vai ficar
+		JTextArea textArea = new JTextArea(20, 20);  
+		JScrollPane scrollableTextArea = new JScrollPane(textArea);  
 
-		JScrollPane scroll = new JScrollPane(labelImage);
-		frame.add (scroll, BorderLayout.CENTER); 
+		scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
 
+		frame.getContentPane().add(scrollableTextArea);  
 
 		JPanel panel = new JPanel(new BorderLayout());
 
 		JPanel panelText = new JPanel();
 		panelText.setLayout(new GridLayout(2, 1));
 
+	//Fim do ScrollPane 
+		
+		
+		
+		JTextField textPasta = new JTextField();
+		JTextField textImage = new JTextField();
 
-		final JTextField textPasta = new JTextField();
-		final JTextField textImage = new JTextField();
+	
+
+		
 		panelText.add (textPasta);
 		panelText.add (textImage);
 
@@ -144,86 +157,35 @@ public class GUI {
 		panelButton.add(Imagem);
 
 		panel.add (panelButton, BorderLayout.EAST);
+	}
 
-
+/*
 		JButton Procurar = new JButton ("Procurar");
 		Procurar.addActionListener(new ActionListener(){
 			public void actionPerformed (ActionEvent x){
-				try {
-					ArrayImg();
-					convertArrayImg();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				//try {
+					//ArrayImg();
+					//convertArrayImg();
+				//} catch (IOException e1) {
+					//e1.printStackTrace();
+				//}
 
 
-			}
-		});
+		//	}
+		//S});
 
 		panel.add(Procurar, BorderLayout.SOUTH);
 		frame.add (panel, BorderLayout.SOUTH);
 	}
-
-
-	public void filterFiles (String pasta){ 
-		ArrayInicial = new File(pasta).listFiles(new FileFilter() {
-			public boolean accept(File f){ 
-				if (f.getAbsolutePath().toLowerCase().endsWith(".png")){
-					return true;
-				}
-				return false;
-			}
-		});
-	}
-
-
-
-	public void ArrayImg() throws IOException{
-		filterFiles(path);
-		for (int i=0; i < ArrayInicial.length; i++){
-			ArrayStrings.add(ArrayInicial[i].getName());
-			ArrayImg.add(PathToImg(ArrayInicial[i]));
-		}
-	}
-
-	public void convertArrayImg (){
-		for (int i=0; i < ArrayImg.size(); i++){
-			try {
-				ArrayByte.add(convertToByte(ArrayImg.get(i)));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}		
-		}
-	}
-
-
-
-
-
-
-	public byte[] convertToByte (BufferedImage img) throws IOException{
-		byte[] aux1;
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(img, "png", baos);
-		baos.flush();
-		aux1 = baos.toByteArray();
-		baos.close();
-		return aux1;
-	}
-
-
-
-	public BufferedImage PathToImg (File x) throws IOException{
-		BufferedImage img = ImageIO.read(x);
-		return img;
-	}
-
+		*/
 	
+
+
+
+	public static void main (String[] args) {
+			new GUI().open();
+
+	}
 	
-	public static void main(String[] args) {
-		new GUI().open();
-	}	
-		
-
-
 }
+

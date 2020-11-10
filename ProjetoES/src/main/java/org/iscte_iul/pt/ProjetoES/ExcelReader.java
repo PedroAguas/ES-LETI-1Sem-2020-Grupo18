@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class ExcelReader {
-    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\mdmpe\\OneDrive\\Documentos\\Defeitos.xlsx";
+    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\pedro\\OneDrive\\Desktop\\Faculdade\\3º Ano\\Engenharia de Software\\Defeitos.xlsx";
 
     private static String fila;
 
