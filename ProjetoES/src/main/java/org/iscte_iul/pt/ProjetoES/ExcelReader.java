@@ -8,6 +8,8 @@ import java.util.Iterator;
 public class ExcelReader {
     public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\mdmpe\\OneDrive\\Documentos\\Defeitos.xlsx";
 
+    private String file;
+
     public static void main(String[] args) throws IOException, InvalidFormatException {
 
         // Creating a Workbook from an Excel file (.xls or .xlsx)
@@ -72,17 +74,17 @@ public class ExcelReader {
         }
 
         // 2. Or you can use a for-each loop to iterate over the rows and columns
-        System.out.println("\n\nIterating over Rows and Columns using for-each loop\n");
+     /*   System.out.println("\n\nIterating over Rows and Columns using for-each loop\n");
         for (Row row: sheet) {
             for(Cell cell: row) {
                 String cellValue = dataFormatter.formatCellValue(cell);
                 System.out.print(cellValue + "\t");
             }
             System.out.println();
-        }
+        }*/
 
         // 3. Or you can use Java 8 forEach loop with lambda
-        System.out.println("\n\nIterating over Rows and Columns using Java 8 forEach with lambda\n");
+       /* System.out.println("\n\nIterating over Rows and Columns using Java 8 forEach with lambda\n");
         sheet.forEach(row -> {
             row.forEach(cell -> {
                 String cellValue = dataFormatter.formatCellValue(cell);
@@ -92,6 +94,6 @@ public class ExcelReader {
         });
 
         // Closing the workbook
-        workbook.close();
+        workbook.close();*/
     }
 }
