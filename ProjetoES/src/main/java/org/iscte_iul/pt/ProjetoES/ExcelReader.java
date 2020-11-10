@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class ExcelReader {
-    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\pedro\\OneDrive\\Desktop\\Faculdade\\3º Ano\\Engenharia de Software\\Defeitos.xlsx";
+    public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\mdmpe\\OneDrive\\Documentos\\Defeitos.xlsx";
 
-    private static String fila;
+    private static String dados;
+    private static String[][] s; 
 
     public static void main(String[] args) throws IOException, InvalidFormatException {
 
@@ -68,8 +69,14 @@ public class ExcelReader {
             while (cellIterator.hasNext()) {
                 Cell cell = cellIterator.next();
                 String cellValue = dataFormatter.formatCellValue(cell);
-                System.out.print(cellValue + "\t");
-                fila = cellValue;
+               // String[][] teste = System.out.print(cellValue + "\t");
+                dados = cellValue;
+               // System.out.println(dados);
+                for(int i =0;i<cellValue.length();i++) {
+                	s[i]=cellValue.split(" ");
+                	System.out.println(s[i]+"\n");
+                }
+                
             }
             System.out.println();
         }

@@ -17,6 +17,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 
 public class GUI {
@@ -30,7 +32,9 @@ public class GUI {
 	private ArrayList<byte[]> ArrayByte = new ArrayList<byte[]>(); 
 	@SuppressWarnings("rawtypes")
 	private DefaultListModel model = new DefaultListModel<String>();
-
+	
+	
+	
 
 	public GUI(){
 		frame = new JFrame ("Find Images");
@@ -38,6 +42,7 @@ public class GUI {
 		frame.setLayout(new BorderLayout());
 		configurationFrame();
 		frame.setSize(700, 450);
+		   
 	}	
 
 	public void open(){
@@ -82,8 +87,12 @@ public class GUI {
 		frame.add (imagens, BorderLayout.EAST); 
 
 	//Parte onde o excel vai ficar
+		 TableModel data = null;
+			TableColumnModel column = null;
+			JTable jt=new JTable(data,column);    
+			 jt.setBounds(30,40,200,300);     
 		JTextArea textArea = new JTextArea(20, 20);  
-		JScrollPane scrollableTextArea = new JScrollPane(textArea);  
+		JScrollPane scrollableTextArea = new JScrollPane(jt);  
 
 		scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
 		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
