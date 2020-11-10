@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class ExcelReader {
     public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\mdmpe\\OneDrive\\Documentos\\Defeitos.xlsx";
 
-    private String file;
+    private static String fila;
 
     public static void main(String[] args) throws IOException, InvalidFormatException {
 
@@ -69,6 +69,7 @@ public class ExcelReader {
                 Cell cell = cellIterator.next();
                 String cellValue = dataFormatter.formatCellValue(cell);
                 System.out.print(cellValue + "\t");
+                fila = cellValue;
             }
             System.out.println();
         }
