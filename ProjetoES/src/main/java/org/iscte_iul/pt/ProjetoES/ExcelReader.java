@@ -8,8 +8,10 @@ import java.util.Iterator;
 public class ExcelReader {
     public static final String SAMPLE_XLSX_FILE_PATH = "C:\\Users\\mdmpe\\OneDrive\\Documentos\\Defeitos.xlsx";
 
-    private static String dados;
-    private static String[][] s; 
+    private static String dados[][];
+  
+    
+   
 
     public static void main(String[] args) throws IOException, InvalidFormatException {
 
@@ -62,23 +64,19 @@ public class ExcelReader {
         Iterator<Row> rowIterator = sheet.rowIterator();
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
-
+            
             // Now let's iterate over the columns of the current row
             Iterator<Cell> cellIterator = row.cellIterator();
-
+            
+            
             while (cellIterator.hasNext()) {
                 Cell cell = cellIterator.next();
                 String cellValue = dataFormatter.formatCellValue(cell);
-               // String[][] teste = System.out.print(cellValue + "\t");
-                dados = cellValue;
-               // System.out.println(dados);
-                for(int i =0;i<cellValue.length();i++) {
-                	s[i]=cellValue.split(" ");
-                	System.out.println(s[i]+"\n");
-                }
                 
+                dados[row.getRowNum()][cell.getColumnIndex()]=cellValue;
             }
-            System.out.println();
+            //System.out.println();
+          
         }
 
         // 2. Or you can use a for-each loop to iterate over the rows and columns
@@ -102,6 +100,23 @@ public class ExcelReader {
         });
 
         // Closing the workbook
+         * 
         workbook.close();*/
+       
     }
+
+
+
+
+	public static String getSampleXlsxFilePath() {
+		return SAMPLE_XLSX_FILE_PATH;
+	}
+
+
+
+
+	public static String[][] getDados() {
+		return dados;
+	}
+    
 }

@@ -87,10 +87,10 @@ public class GUI {
 		frame.add (imagens, BorderLayout.EAST); 
 
 	//Parte onde o excel vai ficar
-		 TableModel data = null;
-			TableColumnModel column = null;
-			JTable jt=new JTable(data,column);    
-			 jt.setBounds(30,40,200,300);     
+		
+		
+		
+		JTable jt=new JTable(ExcelReader.getDados(),new String[] {"1","1","1","1","1","1","1","1","1","10","11","12"}) ;    	  
 		JTextArea textArea = new JTextArea(20, 20);  
 		JScrollPane scrollableTextArea = new JScrollPane(jt);  
 
