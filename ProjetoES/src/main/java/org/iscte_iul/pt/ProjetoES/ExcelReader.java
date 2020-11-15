@@ -17,6 +17,7 @@ public class ExcelReader {
 	// Software\\Defeitos.xlsx";
 	private String PATH;
 	private String dados[][];
+	private String colunas[];
 
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException{
 		this.PATH = PATH;
@@ -37,21 +38,24 @@ public class ExcelReader {
 		// 1. You can obtain a rowIterator and columnIterator and iterate over them
 		System.out.println("\n\nIterating over Rows and Columns using Iterator\n");
 		Iterator<Row> rowIterator = sheet.rowIterator();
+		//Vejam se conseguem arranjar maneira de inicilizar isto melhor sobretudo na parte das colunas e tem de ser geral
+		dados= new String[sheet.getLastRowNum()+1][sheet.getLastRowNum()+1];
 		while (rowIterator.hasNext()) {
 			Row row = rowIterator.next();
-
 			// Now let's iterate over the columns of the current row
 			Iterator<Cell> cellIterator = row.cellIterator();
 
 			while (cellIterator.hasNext()) {
 				Cell cell = cellIterator.next();
 				String cellValue = dataFormatter.formatCellValue(cell);
-
+				//System.out.println("celula: "+cellValue);
 				dados[row.getRowNum()][cell.getColumnIndex()] = cellValue;
+				
 			}
 			// System.out.println();
 
 		}
+		
 
 	}
 
@@ -61,6 +65,9 @@ public class ExcelReader {
 
 	public String[][] getDados() {
 		return dados;
+	}
+	public String[] getColuna() {
+		return dados[0];
 	}
 
 }

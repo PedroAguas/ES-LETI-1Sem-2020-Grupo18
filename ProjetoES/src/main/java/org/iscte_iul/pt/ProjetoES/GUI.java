@@ -19,7 +19,6 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 public class GUI {
 	private JFrame frame;
-	private String Path = "C:\\Users\\pedro\\OneDrive\\Desktop\\Faculdade\\3º Ano\\Engenharia de Software\\Defeitos.xlsx";
 	private ExcelReader ER;
 	private File selectedFile;
 	private String path;
@@ -54,9 +53,8 @@ public class GUI {
 						e.printStackTrace();
 					}
 					
-					
-					JTable jt = new JTable(ER.getDados(), 
-							new String[] { "1", "1", "1", "1", "1", "1", "1", "1", "1", "10", "11", "12" });
+					System.out.println(ER.getDados());
+					JTable jt = new JTable(ER.getDados(), ER.getColuna());
 
 					JScrollPane excel = new JScrollPane(jt);
 						
