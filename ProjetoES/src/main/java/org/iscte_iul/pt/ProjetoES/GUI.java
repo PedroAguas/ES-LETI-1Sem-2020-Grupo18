@@ -53,9 +53,9 @@ public class GUI {
 						e.printStackTrace();
 					}
 					
-					System.out.println(ER.getDados());
+					//System.out.println(ER.getColuna().length);
 					JTable jt = new JTable(ER.getDados(), ER.getColuna());
-
+					System.out.println("jtable criada");
 					JScrollPane excel = new JScrollPane(jt);
 						
 					excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -63,6 +63,7 @@ public class GUI {
 					
 					
 					frame.add(excel, BorderLayout.CENTER);
+					System.out.println("excel dado");
 				} else {
 					if (returnValue == JFileChooser.CANCEL_OPTION) {
 						System.out.println("No File Selected");

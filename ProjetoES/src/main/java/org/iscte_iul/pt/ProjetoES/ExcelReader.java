@@ -67,7 +67,15 @@ public class ExcelReader {
 		return dados;
 	}
 	public String[] getColuna() {
-		return dados[0];
+		String[] temp = new String[12];
+			for(int k =0;k<12;k++) {
+				
+					temp[k]=dados[0][k];
+					//System.out.println(temp[k]);
+			}
+		
+		//System.out.println(temp.length);
+		return temp;
 	}
 
 }
