@@ -53,7 +53,7 @@ public class GUI {
 						e.printStackTrace();
 					}
 					
-					//System.out.println(ER.getColuna().length);
+					
 					JTable jt = new JTable(ER.getDados(), ER.getColuna());
 					System.out.println("jtable criada");
 					JScrollPane excel = new JScrollPane(jt);
