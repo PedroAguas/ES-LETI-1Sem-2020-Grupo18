@@ -145,7 +145,6 @@ public class GUI {
 			}
 		});
 
-		
 		JButton Excel = new JButton("Excel");
 		Excel.addActionListener(new ActionListener() {
 
