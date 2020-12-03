@@ -12,10 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 public class ExcelReader {
-	
+
 	private String PATH;
 	private String dados[][];
-	
+
 
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException{
 		this.PATH = PATH;
@@ -36,7 +36,7 @@ public class ExcelReader {
 		// 1. You can obtain a rowIterator and columnIterator and iterate over them
 		System.out.println("\n\nIterating over Rows and Columns using Iterator\n");
 		Iterator<Row> rowIterator = sheet.rowIterator();
-		
+
 		dados= new String[sheet.getLastRowNum()+1][sheet.getLastRowNum()+1];
 		while (rowIterator.hasNext()) {
 			Row row = rowIterator.next();
@@ -47,11 +47,11 @@ public class ExcelReader {
 				Cell cell = cellIterator.next();
 				String cellValue = dataFormatter.formatCellValue(cell);		
 				dados[row.getRowNum()][cell.getColumnIndex()] = cellValue;
-				
+
 			}
-		
+
 		}
-		
+
 	}
 
 	public String getSampleXlsxFilePath() {
@@ -61,15 +61,17 @@ public class ExcelReader {
 	public String[][] getDados() {
 		return dados;
 	}
-	public String[] getColuna() {
-		String[] temp = new String[12];
-			for(int k =0;k<12;k++) {
-				
-					temp[k]=dados[0][k];
-					
-			}
-		
 	
+
+	public String[] getColunaInicial() {
+		String[] temp = new String[12];
+		for(int k =0;k<12;k++) {
+
+			temp[k]=dados[0][k];
+
+		}
+
+
 		return temp;
 	}
 
