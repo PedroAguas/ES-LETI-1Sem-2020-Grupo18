@@ -15,7 +15,8 @@ public class ExcelReader {
 
 	private String PATH;
 	private String dados[][];
-
+//coluna 5 e 6
+	//outro coluna 7 8
 
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException{
 		this.PATH = PATH;

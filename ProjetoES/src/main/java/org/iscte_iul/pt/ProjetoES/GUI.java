@@ -97,7 +97,8 @@ public class GUI {
 							JButton lmCheck = new JButton("Confirmar");
 							lmCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-									// Funcao que a Joana fizer
+									// AQUI	
+									
 								}
 							});
 
