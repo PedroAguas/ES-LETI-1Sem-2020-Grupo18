@@ -86,7 +86,9 @@ public class GUI {
 							JPanel lmPanel = new JPanel();
 							lmPanel.setLayout(new GridLayout(2, 2));
 							JLabel lmLabelLOC = new JLabel("LOC");
+							//System.out.println("LOC: "+lmLabelLOC.getText());
 							JLabel lmLabelCYCLO = new JLabel("CYCLO");
+							//System.out.println("Cyclo: "+lmLabelCYCLO.getText());
 							JTextField lmTextLOC = new JTextField();
 							JTextField lmTextCYCLO = new JTextField();
 
@@ -101,11 +103,12 @@ public class GUI {
 								public void actionPerformed(ActionEvent x) {
 									// AQUI	
 						
-										
-										isLongMethod pmetodo = new isLongMethod(ER.getDados(),"5","4");
+								//	System.out.println("LOC: "+lmLabelLOC.getText());
+									//System.out.println("Cyclo: "+lmLabelCYCLO.getText());
+										isLongMethod pmetodo = new isLongMethod(ER.getDados(),lmTextLOC.getText(), lmTextCYCLO.getText());
 										Boolean[] c= pmetodo.tratar();
 										DefaultTableModel model = new DefaultTableModel();
-										model.addColumn("MyColumnHeader",c);
+										model.addColumn("isLongMethod",c);
 										JTable jt = new JTable(model);
 										//JTable jt = new JTable(c, ER.getColunaInicial());
 										JScrollPane excel = new JScrollPane(jt);
