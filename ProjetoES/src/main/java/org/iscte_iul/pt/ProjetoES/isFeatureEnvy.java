@@ -9,7 +9,7 @@ public class isFeatureEnvy {
 	private String[][] dados;
 	private String atfd;
 	private String laa;
-	private ArrayList<Integer> resultados = new ArrayList<>();
+	private ArrayList<Boolean> resultados = new ArrayList<>();
 	
 	public isFeatureEnvy(String[][] dados, String atfd, String laa) {
 		this.dados=dados;
@@ -17,13 +17,13 @@ public class isFeatureEnvy {
 		this.laa=laa;
 		tratar();
 	}
-	public  ArrayList<Integer> tratar() {
+	public  ArrayList<Boolean> tratar() {
 		for(int i=0;i<dados.length;i++) {
 			for(int j=0;j<dados[i].length;j++) {
 				if((i!=0 && Integer.parseInt(dados[i][6])>Integer.parseInt(atfd))||i!=0 && Integer.parseInt(dados[i][7])<Integer.parseInt(laa)) {
-					resultados.add(1);
+					resultados.add(true);
 				}else {
-					resultados.add(0);
+					resultados.add(false);
 				}
 			}
 		}

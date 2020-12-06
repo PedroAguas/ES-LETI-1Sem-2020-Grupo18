@@ -3,13 +3,12 @@ package org.iscte_iul.pt.ProjetoES;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
-import java.awt.BorderLayout;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+
 
 public class ExcelReader {
 

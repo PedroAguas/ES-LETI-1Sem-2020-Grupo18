@@ -1,7 +1,7 @@
 package org.iscte_iul.pt.ProjetoES;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 
 //coluna 5 e 6
@@ -10,7 +10,7 @@ public class isLongMethod {
 	private String[][] dados;
 	private String loc;
 	private String cyclo;
-	private ArrayList<Integer> resultados = new ArrayList<>();
+	private Boolean[] resultados = new Boolean[500];
 	
 	
 	public isLongMethod(String[][] dados, String loc, String cyclo) {
@@ -21,13 +21,13 @@ public class isLongMethod {
 	}
 	
 	
-	public  ArrayList<Integer> tratar() {
+	public  Boolean[] tratar() {
 		for(int i=0;i<dados.length;i++) {
 			for(int j=0;j<dados[i].length;j++) {
 				if((i!=0 && Integer.parseInt(dados[i][4])>Integer.parseInt(loc))||i!=0 && Integer.parseInt(dados[i][5])>Integer.parseInt(cyclo)) {
-					resultados.add(1);
+					resultados[i]=true;
 				}else {
-					resultados.add(0);
+					resultados[i]=false;
 				}
 			}
 		}

@@ -8,11 +8,13 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 public class GUI {
 	private JFrame frame;
+	private JFrame framea;
 	private ExcelReader ER;
 	private File selectedFile;
 	private String path;
@@ -98,9 +100,27 @@ public class GUI {
 							lmCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 									// AQUI	
+						
+										
+										isLongMethod pmetodo = new isLongMethod(ER.getDados(),"5","4");
+										Boolean[] c= pmetodo.tratar();
+										DefaultTableModel model = new DefaultTableModel();
+										model.addColumn("MyColumnHeader",c);
+										JTable jt = new JTable(model);
+										//JTable jt = new JTable(c, ER.getColunaInicial());
+										JScrollPane excel = new JScrollPane(jt);
+
+										excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+										excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+										frame.add(excel, BorderLayout.CENTER);
+										frame.setVisible(true);
+									
 									
 								}
-							});
+							
+								}
+							);
 
 							lmPanelButton.add(lmCheck);
 							lm.add(lmPanelButton, BorderLayout.SOUTH);
