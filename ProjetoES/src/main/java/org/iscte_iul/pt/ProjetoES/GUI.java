@@ -17,7 +17,7 @@ public class GUI {
 	private ExcelReader ER;
 	private File selectedFile;
 	private String path;
-	private String[] regras = { "PMI", "IPlasma", "Metricas" };
+	private JScrollPane excel;
 
 	public GUI() {
 		frame = new JFrame("Read Excel");
@@ -98,40 +98,32 @@ public class GUI {
 							JButton lmCheck = new JButton("Confirmar");
 							lmCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-									// AQUI	
-						
-								//	System.out.println("LOC: "+lmLabelLOC.getText());
-									//System.out.println("Cyclo: "+lmLabelCYCLO.getText());
-									
-										JPanel lmPanelButton = new JPanel();
-										JPanel lmPanel = new JPanel();
-										lmPanel.setLayout(new GridLayout(2, 2));
-										JDialog lmfinal = new JDialog(frameRegra, "Parametros Long Method");
-										lmfinal.setLayout(new BorderLayout());
-										lmfinal.setLocation(600, 250);
-										lmfinal.setVisible(true);
-										lmfinal.setSize(200, 125);
-										isLongMethod pmetodo = new isLongMethod(ER.getDados(),lmTextLOC.getText(), lmTextCYCLO.getText());
-										Boolean[] c= pmetodo.tratar();
-										DefaultTableModel model = new DefaultTableModel();
-										model.addColumn("isLongMethod",c);
-										JTable jt = new JTable(model);
-										//JTable jt = new JTable(c, ER.getColunaInicial());
-										JScrollPane excel = new JScrollPane(jt);
+									frame.remove(excel);
+									frameRegra.dispose();
+									lm.dispose();
 
-										excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-										excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-										lm.add(excel);
-										lm.add(lmPanel, BorderLayout.NORTH);
-										lmfinal.add(excel, BorderLayout.CENTER);
-										lmfinal.isResizable();
-										lmfinal.setVisible(true);
-									
-									
+									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
+											lmTextCYCLO.getText());
+
+									JPanel lmPanelFinal = new JPanel();
+									lmPanelFinal.setLayout(new GridLayout(1, 2));
+
+									JList<String> model = new JList<String>(pmetodo.getdados());
+									JScrollPane excellmFinal = new JScrollPane(model);
+									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+									lmPanelFinal.add(excellmFinal);
+									frame.add(lmPanelFinal, BorderLayout.CENTER);
+									frame.setVisible(true);
+
+									/*
+									 * lmfinal.add(excellmFinal); lmfinal.add(lmPanel); //lmfinal.add(excellmFinal);
+									 * lmfinal.isResizable();
+									 */
+
 								}
-							
-								}
-							);
+
+							});
 
 							lmPanelButton.add(lmCheck);
 							lm.add(lmPanelButton, BorderLayout.SOUTH);
@@ -161,32 +153,28 @@ public class GUI {
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 									// Funcao que a Joana fizer
-									
-									
-									
-									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(),feTextATFD.getText(), feTextLAA.getText());
-									Boolean[] c= smetodo.tratar();
-									DefaultTableModel model = new DefaultTableModel();
-									model.addColumn("isLongMethod",c);
-									JTable jt = new JTable(model);
-									//JTable jt = new JTable(c, ER.getColunaInicial());
-									JScrollPane excel = new JScrollPane(jt);
 
-									excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-									excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									frame.remove(excel);
+									frameRegra.dispose();
+									fe.dispose();
 
-									frame.add(excel, BorderLayout.CENTER);
+									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
+											feTextLAA.getText());
+
+									JPanel fePanelFinal = new JPanel();
+									fePanelFinal.setLayout(new GridLayout(1, 2));
+
+									JList<String> model = new JList<String>(smetodo.getdados());
+									JScrollPane excelfeFinal = new JScrollPane(model);
+									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+									fePanelFinal.add(excelfeFinal);
+									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
-									
-									
-									
-									
-									
-									
-									
+
 								}
 							});
-							//g1.clearSelection();
+							// g1.clearSelection();
 							fePanelButton.add(feCheck);
 							fe.add(fePanelButton, BorderLayout.SOUTH);
 						}
@@ -217,8 +205,8 @@ public class GUI {
 						e.printStackTrace();
 					}
 
-					JTable jt = new JTable(ER.getDados(), ER.getColunaInicial());
-					JScrollPane excel = new JScrollPane(jt);
+					JTable jt = new JTable(ER.getDados(), ER.getHeader());
+					excel = new JScrollPane(jt);
 
 					excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 					excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
