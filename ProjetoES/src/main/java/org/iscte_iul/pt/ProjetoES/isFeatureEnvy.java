@@ -1,6 +1,6 @@
 package org.iscte_iul.pt.ProjetoES;
 
-import java.util.ArrayList;
+
 
 public class isFeatureEnvy {
 	//outro coluna 7 8
@@ -9,7 +9,7 @@ public class isFeatureEnvy {
 	private String[][] dados;
 	private String atfd;
 	private String laa;
-	private ArrayList<Boolean> resultados = new ArrayList<>();
+	private Boolean [] resultados =new Boolean[500];
 	
 	public isFeatureEnvy(String[][] dados, String atfd, String laa) {
 		this.dados=dados;
@@ -17,13 +17,13 @@ public class isFeatureEnvy {
 		this.laa=laa;
 		tratar();
 	}
-	public  ArrayList<Boolean> tratar() {
+	public  Boolean[] tratar() {
 		for(int i=0;i<dados.length;i++) {
 			for(int j=0;j<dados[i].length;j++) {
-				if((i!=0 && Integer.parseInt(dados[i][6])>Integer.parseInt(atfd))||i!=0 && Integer.parseInt(dados[i][7])<Integer.parseInt(laa)) {
-					resultados.add(true);
+				if((i!=0 && Integer.parseInt(dados[i][6])>Integer.parseInt(atfd.trim()))||i!=0 && Long.parseLong(dados[i][7])<Long.parseLong(laa.trim())) {
+					resultados[i]=true;
 				}else {
-					resultados.add(false);
+					resultados[i]=false;
 				}
 			}
 		}

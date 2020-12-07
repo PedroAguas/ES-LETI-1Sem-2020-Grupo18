@@ -1,6 +1,6 @@
 package org.iscte_iul.pt.ProjetoES;
 
-import java.util.ArrayList;
+
 
 
 
@@ -24,7 +24,7 @@ public class isLongMethod {
 	public  Boolean[] tratar() {
 		for(int i=0;i<dados.length;i++) {
 			for(int j=0;j<dados[i].length;j++) {
-				if((i!=0 && Integer.parseInt(dados[i][4])>Integer.parseInt(loc))||i!=0 && Integer.parseInt(dados[i][5])>Integer.parseInt(cyclo)) {
+				if((i!=0 && Integer.parseInt(dados[i][4])>Integer.parseInt(loc.trim()))||i!=0 && Integer.parseInt(dados[i][5])>Integer.parseInt(cyclo.trim())) {
 					resultados[i]=true;
 				}else {
 					resultados[i]=false;

@@ -14,7 +14,6 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 public class GUI {
 	private JFrame frame;
-	private JFrame framea;
 	private ExcelReader ER;
 	private File selectedFile;
 	private String path;
@@ -86,9 +85,7 @@ public class GUI {
 							JPanel lmPanel = new JPanel();
 							lmPanel.setLayout(new GridLayout(2, 2));
 							JLabel lmLabelLOC = new JLabel("LOC");
-							//System.out.println("LOC: "+lmLabelLOC.getText());
 							JLabel lmLabelCYCLO = new JLabel("CYCLO");
-							//System.out.println("Cyclo: "+lmLabelCYCLO.getText());
 							JTextField lmTextLOC = new JTextField();
 							JTextField lmTextCYCLO = new JTextField();
 
@@ -153,6 +150,26 @@ public class GUI {
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 									// Funcao que a Joana fizer
+									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(),feTextATFD.getText(), feTextLAA.getText());
+									Boolean[] c= smetodo.tratar();
+									DefaultTableModel model = new DefaultTableModel();
+									model.addColumn("isLongMethod",c);
+									JTable jt = new JTable(model);
+									//JTable jt = new JTable(c, ER.getColunaInicial());
+									JScrollPane excel = new JScrollPane(jt);
+
+									excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+									excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+									frame.add(excel, BorderLayout.CENTER);
+									frame.setVisible(true);
+									
+									
+									
+									
+									
+									
+									
 								}
 							});
 
