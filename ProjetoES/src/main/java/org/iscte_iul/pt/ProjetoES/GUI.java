@@ -102,6 +102,15 @@ public class GUI {
 						
 								//	System.out.println("LOC: "+lmLabelLOC.getText());
 									//System.out.println("Cyclo: "+lmLabelCYCLO.getText());
+									
+										JPanel lmPanelButton = new JPanel();
+										JPanel lmPanel = new JPanel();
+										lmPanel.setLayout(new GridLayout(2, 2));
+										JDialog lmfinal = new JDialog(frameRegra, "Parametros Long Method");
+										lmfinal.setLayout(new BorderLayout());
+										lmfinal.setLocation(600, 250);
+										lmfinal.setVisible(true);
+										lmfinal.setSize(200, 125);
 										isLongMethod pmetodo = new isLongMethod(ER.getDados(),lmTextLOC.getText(), lmTextCYCLO.getText());
 										Boolean[] c= pmetodo.tratar();
 										DefaultTableModel model = new DefaultTableModel();
@@ -112,9 +121,11 @@ public class GUI {
 
 										excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 										excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-										frame.add(excel, BorderLayout.CENTER);
-										frame.setVisible(true);
+										lm.add(excel);
+										lm.add(lmPanel, BorderLayout.NORTH);
+										lmfinal.add(excel, BorderLayout.CENTER);
+										lmfinal.isResizable();
+										lmfinal.setVisible(true);
 									
 									
 								}
@@ -150,6 +161,9 @@ public class GUI {
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 									// Funcao que a Joana fizer
+									
+									
+									
 									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(),feTextATFD.getText(), feTextLAA.getText());
 									Boolean[] c= smetodo.tratar();
 									DefaultTableModel model = new DefaultTableModel();
@@ -172,7 +186,7 @@ public class GUI {
 									
 								}
 							});
-
+							//g1.clearSelection();
 							fePanelButton.add(feCheck);
 							fe.add(fePanelButton, BorderLayout.SOUTH);
 						}
