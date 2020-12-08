@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -16,7 +17,7 @@ public class GUI {
 	private ExcelReader ER;
 	private File selectedFile;
 	private String path;
-	private String[] regras = { "PMI", "IPlasma", "Metricas" };
+	private JScrollPane excel;
 
 	public GUI() {
 		frame = new JFrame("Read Excel");
@@ -97,8 +98,31 @@ public class GUI {
 							JButton lmCheck = new JButton("Confirmar");
 							lmCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-									// Funcao que a Joana fizer
+									frame.remove(excel);
+									frameRegra.dispose();
+									lm.dispose();
+
+									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
+											lmTextCYCLO.getText());
+
+									JPanel lmPanelFinal = new JPanel();
+									lmPanelFinal.setLayout(new GridLayout(1, 2));
+
+									JList<String> model = new JList<String>(pmetodo.getdados());
+									JScrollPane excellmFinal = new JScrollPane(model);
+									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+									lmPanelFinal.add(excellmFinal);
+									frame.add(lmPanelFinal, BorderLayout.CENTER);
+									frame.setVisible(true);
+
+									/*
+									 * lmfinal.add(excellmFinal); lmfinal.add(lmPanel); //lmfinal.add(excellmFinal);
+									 * lmfinal.isResizable();
+									 */
+
 								}
+
 							});
 
 							lmPanelButton.add(lmCheck);
@@ -129,9 +153,28 @@ public class GUI {
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 									// Funcao que a Joana fizer
+
+									frame.remove(excel);
+									frameRegra.dispose();
+									fe.dispose();
+
+									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
+											feTextLAA.getText());
+
+									JPanel fePanelFinal = new JPanel();
+									fePanelFinal.setLayout(new GridLayout(1, 2));
+
+									JList<String> model = new JList<String>(smetodo.getdados());
+									JScrollPane excelfeFinal = new JScrollPane(model);
+									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+									fePanelFinal.add(excelfeFinal);
+									frame.add(fePanelFinal, BorderLayout.CENTER);
+									frame.setVisible(true);
+
 								}
 							});
-
+							// g1.clearSelection();
 							fePanelButton.add(feCheck);
 							fe.add(fePanelButton, BorderLayout.SOUTH);
 						}
@@ -162,8 +205,8 @@ public class GUI {
 						e.printStackTrace();
 					}
 
-					JTable jt = new JTable(ER.getDados(), ER.getColunaInicial());
-					JScrollPane excel = new JScrollPane(jt);
+					JTable jt = new JTable(ER.getDados(), ER.getHeader());
+					excel = new JScrollPane(jt);
 
 					excel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 					excel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
