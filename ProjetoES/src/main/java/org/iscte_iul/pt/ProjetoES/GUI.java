@@ -15,6 +15,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 public class GUI {
 	private JFrame frame;
 	private ExcelReader ER;
+	private Defeitos def;
 	private File selectedFile;
 	private String path;
 	private JScrollPane excel;
@@ -44,24 +45,27 @@ public class GUI {
 				frameRegra.setSize(400, 500);
 
 				JPanel panelCenter = new JPanel();
-				panelCenter.setLayout(new GridLayout(4, 1));
+				panelCenter.setLayout(new GridLayout(5, 1));
 
 				ButtonGroup g1 = new ButtonGroup();
 				JRadioButton firstRadio = new JRadioButton("PMD");
 				JRadioButton secondRadio = new JRadioButton("IPlasma");
 				JRadioButton thirdRadio = new JRadioButton("Long Method");
 				JRadioButton fourthRadio = new JRadioButton("Feature Envy");
+				JRadioButton fifthRadio = new JRadioButton("Regra Personalizada");
 
 				// g1 para selecionar so uma opcao
 				g1.add(firstRadio);
 				g1.add(secondRadio);
 				g1.add(thirdRadio);
 				g1.add(fourthRadio);
+				g1.add(fifthRadio);
 
 				panelCenter.add(firstRadio);
 				panelCenter.add(secondRadio);
 				panelCenter.add(thirdRadio);
 				panelCenter.add(fourthRadio);
+				panelCenter.add(fifthRadio);
 
 				frameRegra.add(panelCenter, BorderLayout.CENTER);
 
@@ -70,11 +74,32 @@ public class GUI {
 
 					public void actionPerformed(ActionEvent x) {
 						if (firstRadio.isSelected()) {
-							// PMD chamar a funcao que a joana fizer para dar os resultados certos
+							frame.remove(excel);
+							frameRegra.dispose();
+
+							def = new Defeitos(ER.getDados());
+							def.defeitos();
+
+							JPanel pmdPanel = new JPanel();
+							pmdPanel.setLayout(new GridLayout(1, 2));
+
+							JTable pmdTable = new JTable(def.getresultados(), def.getheader());
+							pmdTable.setEnabled(false);
+
+							JScrollPane table = new JScrollPane(pmdTable);
+
+							frame.add(table);
+							frame.setVisible(true);
+
 						} else if (secondRadio.isSelected()) {
 							// IPlasma chamar a funcao que a joana fizer para dar os resultados certos
+
+							
+							
+							
+							
+							
 						} else if (thirdRadio.isSelected()) {
-							// Long Method
 							JDialog lm = new JDialog(frameRegra, "Parametros Long Method");
 							lm.setLayout(new BorderLayout());
 							lm.setLocation(600, 250);
@@ -107,19 +132,29 @@ public class GUI {
 
 									JPanel lmPanelFinal = new JPanel();
 									lmPanelFinal.setLayout(new GridLayout(1, 2));
+									
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
 
+									
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
+									
 									JList<String> model = new JList<String>(pmetodo.getdados());
+									JScrollPane tabela = new JScrollPane(DefFe);
+									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									tabela.setWheelScrollingEnabled(true);
+									
 									JScrollPane excellmFinal = new JScrollPane(model);
 									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+									excellmFinal.setWheelScrollingEnabled(true);
+									
 									lmPanelFinal.add(excellmFinal);
+									lmPanelFinal.add(DefFe);
+									lmPanelFinal.setLocation(10, 50);
 									frame.add(lmPanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
-
-									/*
-									 * lmfinal.add(excellmFinal); lmfinal.add(lmPanel); //lmfinal.add(excellmFinal);
-									 * lmfinal.isResizable();
-									 */
 
 								}
 
@@ -127,8 +162,7 @@ public class GUI {
 
 							lmPanelButton.add(lmCheck);
 							lm.add(lmPanelButton, BorderLayout.SOUTH);
-						} else {
-							// Feature Envy Criar janela para por os parametros
+						} else if (fourthRadio.isSelected()) {
 							JDialog fe = new JDialog(frameRegra, "Parametros Long Method");
 							fe.setLayout(new BorderLayout());
 							fe.setLocation(600, 250);
@@ -152,7 +186,6 @@ public class GUI {
 							JButton feCheck = new JButton("Confirmar");
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-									// Funcao que a Joana fizer
 
 									frame.remove(excel);
 									frameRegra.dispose();
@@ -164,19 +197,41 @@ public class GUI {
 									JPanel fePanelFinal = new JPanel();
 									fePanelFinal.setLayout(new GridLayout(1, 2));
 
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
+
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
 									JList<String> model = new JList<String>(smetodo.getdados());
 									JScrollPane excelfeFinal = new JScrollPane(model);
 									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 									fePanelFinal.add(excelfeFinal);
+									fePanelFinal.add(DefFe);
 									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
 
 								}
 							});
-							// g1.clearSelection();
+
 							fePanelButton.add(feCheck);
 							fe.add(fePanelButton, BorderLayout.SOUTH);
+						} else {
+
+							JButton feCheck = new JButton("Confirmar");
+							feCheck.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent x) {
+
+									frame.remove(excel);
+									frameRegra.dispose();
+
+									JDialog pr = new JDialog(frameRegra, "Personalizar Regras");
+									JPanel fifthpanel = new JPanel(new GridLayout(7, 2));
+
+								}
+							});
+
 						}
 					}
 				});
