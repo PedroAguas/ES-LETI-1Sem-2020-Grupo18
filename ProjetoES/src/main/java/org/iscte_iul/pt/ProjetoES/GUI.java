@@ -84,6 +84,8 @@ public class GUI {
 							pmdPanel.setLayout(new GridLayout(1, 2));
 
 							JTable pmdTable = new JTable(def.getresultados(), def.getheader());
+							pmdTable.setEnabled(false);
+
 							JScrollPane table = new JScrollPane(pmdTable);
 
 							frame.add(table);
@@ -92,6 +94,11 @@ public class GUI {
 						} else if (secondRadio.isSelected()) {
 							// IPlasma chamar a funcao que a joana fizer para dar os resultados certos
 
+							
+							
+							
+							
+							
 						} else if (thirdRadio.isSelected()) {
 							JDialog lm = new JDialog(frameRegra, "Parametros Long Method");
 							lm.setLayout(new BorderLayout());
@@ -125,12 +132,27 @@ public class GUI {
 
 									JPanel lmPanelFinal = new JPanel();
 									lmPanelFinal.setLayout(new GridLayout(1, 2));
+									
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
 
+									
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
+									
 									JList<String> model = new JList<String>(pmetodo.getdados());
+									JScrollPane tabela = new JScrollPane(DefFe);
+									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									tabela.setWheelScrollingEnabled(true);
+									
 									JScrollPane excellmFinal = new JScrollPane(model);
 									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+									excellmFinal.setWheelScrollingEnabled(true);
+									
 									lmPanelFinal.add(excellmFinal);
+									lmPanelFinal.add(DefFe);
+									lmPanelFinal.setLocation(10, 50);
 									frame.add(lmPanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
 
@@ -175,11 +197,18 @@ public class GUI {
 									JPanel fePanelFinal = new JPanel();
 									fePanelFinal.setLayout(new GridLayout(1, 2));
 
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
+
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
 									JList<String> model = new JList<String>(smetodo.getdados());
 									JScrollPane excelfeFinal = new JScrollPane(model);
 									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 									fePanelFinal.add(excelfeFinal);
+									fePanelFinal.add(DefFe);
 									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
 
@@ -189,21 +218,16 @@ public class GUI {
 							fePanelButton.add(feCheck);
 							fe.add(fePanelButton, BorderLayout.SOUTH);
 						} else {
-							
+
 							JButton feCheck = new JButton("Confirmar");
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
 
 									frame.remove(excel);
 									frameRegra.dispose();
-									
+
 									JDialog pr = new JDialog(frameRegra, "Personalizar Regras");
-									JPanel fifthpanel = new JPanel(new GridLayout(7,2));									
-									
-									
-									
-									
-									
+									JPanel fifthpanel = new JPanel(new GridLayout(7, 2));
 
 								}
 							});
