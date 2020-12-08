@@ -141,6 +141,7 @@ public class GUI {
 									DefFe.setEnabled(false);
 
 									
+									
 									JList<String> model = new JList<String>(pmetodo.getdados());
 									JScrollPane tabela = new JScrollPane(DefFe);
 									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
