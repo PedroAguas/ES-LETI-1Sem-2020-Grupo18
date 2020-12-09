@@ -19,7 +19,7 @@ public class isFeatureEnvy {
 		System.out.println(resultados.length);
 		int j = 0;
 		for (int i = 1; i < dados.length; i++) {
-			if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
+			if ((Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim()))
 					&& Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
 				resultados[j] = dados[i][0];
 				j++;
@@ -27,8 +27,7 @@ public class isFeatureEnvy {
 		}
 		return resultados;
 	}
-	
-	
+
 	public String[] getdados() {
 		return resultados;
 	}
