@@ -174,18 +174,14 @@ public class GUI {
 											feTextLAA.getText());
 
 									JPanel fePanelFinal = new JPanel();
-									fePanelFinal.setLayout(new GridLayout(2, 1));
+									fePanelFinal.setLayout(new GridLayout(1, 2));
 
 									JList<String> model = new JList<String>(smetodo.getdados());
 									JScrollPane excelfeFinal = new JScrollPane(model);
 									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-									//fePanelFinal.add(excelfeFinal);
-									JSplitPane splitFE = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, excelfeFinal, fePanelFinal);
-									splitFE.setVisible(true);
-									
-									//frame.add(fePanelFinal, BorderLayout.CENTER);
-									frame.add(splitFE, BorderLayout.CENTER);
+									fePanelFinal.add(excelfeFinal);
+									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
 
 								}
@@ -220,70 +216,139 @@ public class GUI {
 							JButton prCheck = new JButton("Confirmar Code Smell");
 							prCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-									frame.remove(excel);
-									frameRegra.dispose();
-									pr.dispose();
+									if (longMethodPR.isSelected()) {
+										frame.remove(excel);
+										frameRegra.dispose();
+										pr.dispose();
 
-									JDialog prDefineParametros = new JDialog(frameRegra, "Personalizar Regras");
-									prDefineParametros.setLayout(new GridLayout(4, 1));
-									prDefineParametros.setLocation(600, 250);
-									prDefineParametros.setVisible(true);
-									prDefineParametros.setSize(300, 175);
+										JDialog prDefineParametros = new JDialog(frameRegra, "Personalizar Regras");
+										prDefineParametros.setLayout(new GridLayout(4, 1));
+										prDefineParametros.setLocation(600, 250);
+										prDefineParametros.setVisible(true);
+										prDefineParametros.setSize(300, 175);
 
-									JPanel panelLMRP1linha = new JPanel(new GridLayout(1, 3));
-									JPanel panelLMRP2linha = new JPanel(new GridLayout(1, 2));
-									JPanel panelLMRP3linha = new JPanel(new GridLayout(1, 3));
-									JPanel panelLMRP4linha = new JPanel(new GridLayout(1, 1));
+										JPanel panelLMRP1linha = new JPanel(new GridLayout(1, 3));
+										JPanel panelLMRP2linha = new JPanel(new GridLayout(1, 2));
+										JPanel panelLMRP3linha = new JPanel(new GridLayout(1, 3));
+										JPanel panelLMRP4linha = new JPanel(new GridLayout(1, 1));
 
-									JLabel labelLOC = new JLabel("LOC");
-									JTextField locEditorLogic = new JTextField();
-									JTextField locEditorNumber = new JTextField();
+										JLabel labelLOC = new JLabel("LOC");
+										JTextField locEditorLogic = new JTextField();
+										JTextField locEditorNumber = new JTextField();
 
-									JLabel editorLabel = new JLabel("Escreva and ou or");
-									JTextField editorAndOr = new JTextField();
+										JLabel editorLabel = new JLabel("Escreva and ou or");
+										JTextField editorAndOr = new JTextField();
 
-									JLabel labelCYCLO = new JLabel("CYCLO");
-									JTextField cycloEditorLogic = new JTextField();
-									JTextField cycloEditorNumber = new JTextField();
+										JLabel labelCYCLO = new JLabel("CYCLO");
+										JTextField cycloEditorLogic = new JTextField();
+										JTextField cycloEditorNumber = new JTextField();
 
-									panelLMRP1linha.add(labelLOC);
-									panelLMRP1linha.add(locEditorLogic);
-									panelLMRP1linha.add(locEditorNumber);
-									panelLMRP2linha.add(editorLabel);
-									panelLMRP2linha.add(editorAndOr);
-									panelLMRP3linha.add(labelCYCLO);
-									panelLMRP3linha.add(cycloEditorLogic);
-									panelLMRP3linha.add(cycloEditorNumber);
+										panelLMRP1linha.add(labelLOC);
+										panelLMRP1linha.add(locEditorLogic);
+										panelLMRP1linha.add(locEditorNumber);
+										panelLMRP2linha.add(editorLabel);
+										panelLMRP2linha.add(editorAndOr);
+										panelLMRP3linha.add(labelCYCLO);
+										panelLMRP3linha.add(cycloEditorLogic);
+										panelLMRP3linha.add(cycloEditorNumber);
 
-									JButton checkLMPR = new JButton("Confirmar Regra");
-									prCheck.addActionListener(new ActionListener() {
-										public void actionPerformed(ActionEvent x) {
-											/*frame.remove(excel);
-											frameRegra.dispose();
-											pr.dispose();
+										JButton checkLMPR = new JButton("Confirmar Regra");
+										prCheck.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent x) {
+												/*
+												 * frame.remove(excel); frameRegra.dispose(); pr.dispose();
+												 * 
+												 * //isLongMethod pmetodo = new isLongMethod(ER.getDados(),
+												 * lmTextLOC.getText(), lmTextCYCLO.getText());
+												 * 
+												 * JPanel lmPanelFinal = new JPanel(); lmPanelFinal.setLayout(new
+												 * GridLayout(1, 2));
+												 * 
+												 * //JList<String> model = new JList<String>(pmetodo.getdados());
+												 * //JScrollPane excellmFinal = new JScrollPane(model);
+												 * excellmFinal.setVerticalScrollBarPolicy(JScrollPane.
+												 * VERTICAL_SCROLLBAR_ALWAYS);
+												 * 
+												 * lmPanelFinal.add(excellmFinal); frame.add(lmPanelFinal,
+												 * BorderLayout.CENTER); frame.setVisible(true);
+												 */
+											}
+										});
 
-											//isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),	lmTextCYCLO.getText());
+										panelLMRP4linha.add(checkLMPR);
 
-											JPanel lmPanelFinal = new JPanel();
-											lmPanelFinal.setLayout(new GridLayout(1, 2));
+										prDefineParametros.add(panelLMRP1linha);
+										prDefineParametros.add(panelLMRP2linha);
+										prDefineParametros.add(panelLMRP3linha);
+										prDefineParametros.add(panelLMRP4linha);
 
-											//JList<String> model = new JList<String>(pmetodo.getdados());
-											//JScrollPane excellmFinal = new JScrollPane(model);
-											excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									} else {
+										frame.remove(excel);
+										frameRegra.dispose();
+										pr.dispose();
 
-											lmPanelFinal.add(excellmFinal);
-											frame.add(lmPanelFinal, BorderLayout.CENTER);
-											frame.setVisible(true);*/
-										}
-									});
+										JDialog feDefineParametros = new JDialog(frameRegra, "Personalizar Regras");
+										feDefineParametros.setLayout(new GridLayout(4, 1));
+										feDefineParametros.setLocation(600, 250);
+										feDefineParametros.setVisible(true);
+										feDefineParametros.setSize(300, 175);
 
-									panelLMRP4linha.add(checkLMPR);
+										JPanel panelFERP1linha = new JPanel(new GridLayout(1, 3));
+										JPanel panelFERP2linha = new JPanel(new GridLayout(1, 2));
+										JPanel panelFERP3linha = new JPanel(new GridLayout(1, 3));
+										JPanel panelFERP4linha = new JPanel(new GridLayout(1, 1));
 
-									prDefineParametros.add(panelLMRP1linha);
-									prDefineParametros.add(panelLMRP2linha);
-									prDefineParametros.add(panelLMRP3linha);
-									prDefineParametros.add(panelLMRP4linha);
+										JLabel labelATFD = new JLabel("ATFD");
+										JTextField atfdEditorLogic = new JTextField();
+										JTextField atfdEditorNumber = new JTextField();
 
+										JLabel editorLabel = new JLabel("Escreva and ou or");
+										JTextField editorAndOr = new JTextField();
+
+										JLabel labelLAA = new JLabel("CYCLO");
+										JTextField laaEditorLogic = new JTextField();
+										JTextField laaloEditorNumber = new JTextField();
+
+										panelFERP1linha.add(labelATFD);
+										panelFERP1linha.add(atfdEditorLogic);
+										panelFERP1linha.add(atfdEditorNumber);
+										panelFERP2linha.add(editorLabel);
+										panelFERP2linha.add(editorAndOr);
+										panelFERP3linha.add(labelLAA);
+										panelFERP3linha.add(laaEditorLogic);
+										panelFERP3linha.add(laaloEditorNumber);
+
+										JButton checkFEPR = new JButton("Confirmar Regra");
+										prCheck.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent x) {
+												/*
+												 * frame.remove(excel); frameRegra.dispose(); pr.dispose();
+												 * 
+												 * //isLongMethod pmetodo = new isLongMethod(ER.getDados(),
+												 * lmTextLOC.getText(), lmTextCYCLO.getText());
+												 * 
+												 * JPanel lmPanelFinal = new JPanel(); lmPanelFinal.setLayout(new
+												 * GridLayout(1, 2));
+												 * 
+												 * //JList<String> model = new JList<String>(pmetodo.getdados());
+												 * //JScrollPane excellmFinal = new JScrollPane(model);
+												 * excellmFinal.setVerticalScrollBarPolicy(JScrollPane.
+												 * VERTICAL_SCROLLBAR_ALWAYS);
+												 * 
+												 * lmPanelFinal.add(excellmFinal); frame.add(lmPanelFinal,
+												 * BorderLayout.CENTER); frame.setVisible(true);
+												 */
+											}
+										});
+
+										panelFERP4linha.add(checkFEPR);
+
+										feDefineParametros.add(panelFERP1linha);
+										feDefineParametros.add(panelFERP2linha);
+										feDefineParametros.add(panelFERP3linha);
+										feDefineParametros.add(panelFERP4linha);
+
+									}
 								}
 							});
 
