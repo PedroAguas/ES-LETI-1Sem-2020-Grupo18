@@ -7,12 +7,14 @@ public class FeatureEnvy {
 	private char poperador;
 	private char soperador;
 	private String[] resultados;
+	private String logico;
 	
-	public FeatureEnvy(String atfd, String laa, char poperador,char soperador) {
+	public FeatureEnvy(String atfd, String laa, char poperador,char soperador, String logico) {
 		this.atfd=atfd;
 		this.laa=laa;
 		this.poperador=poperador;
 		this.soperador=soperador;
+		this.logico=logico;
 		
 	}
 	
@@ -21,32 +23,114 @@ public class FeatureEnvy {
 		int j = 0;
 		for (int i = 1; i < dados.length; i++) {
 			
+			switch (logico) {
 			
-			switch (poperador | soperador) {
+			case "and":
 			
-			case '>' |'>':
-				if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
-				&& Double.parseDouble(dados[i][7]) > Double.parseDouble(laa.trim())) {
-				
-					resultados[j] = dados[i][0];
-					j++;
+				switch (poperador) {
+					
+							case '>':
+								switch(soperador) {
+									case '<':
+										if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
+										&& Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
+										
+											resultados[j] = dados[i][0];
+											j++;
+										}
+									case '>':
+										if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
+										&& Double.parseDouble(dados[i][7]) > Double.parseDouble(laa.trim())) {
+										
+											resultados[j] = dados[i][0];
+											j++;
+										}
+										
+								}	
+							case '<':
+								switch(soperador) {
+								case '<':
+									if ((i != 0 && Double.parseDouble(dados[i][6]) < Double.parseDouble(atfd.trim())) && i != 0
+									&& Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
+									
+										resultados[j] = dados[i][0];
+										j++;
+									}
+								case '>':
+									if ((i != 0 && Double.parseDouble(dados[i][6]) < Double.parseDouble(atfd.trim())) && i != 0
+									&& Double.parseDouble(dados[i][7]) > Double.parseDouble(laa.trim())) {
+									
+										resultados[j] = dados[i][0];
+										j++;
+									}
+									
+							}	
+								
+								
+								
+								
 				}
-			case '<' |'<':
-				if ((i != 0 && Double.parseDouble(dados[i][6]) < Double.parseDouble(atfd.trim())) && i != 0
-				&& Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
 				
-					resultados[j] = dados[i][0];
-					j++;
+				
+			case "or":
+				switch (poperador) {
+				
+				case '>':
+					switch(soperador) {
+						case '<':
+							if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
+							|| Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
+							
+								resultados[j] = dados[i][0];
+								j++;
+							}
+						case '>':
+							if ((i != 0 && Double.parseDouble(dados[i][6]) > Double.parseDouble(atfd.trim())) && i != 0
+							|| Double.parseDouble(dados[i][7]) > Double.parseDouble(laa.trim())) {
+							
+								resultados[j] = dados[i][0];
+								j++;
+							}
+							
+					}	
+				case '<':
+					switch(soperador) {
+					case '<':
+						if ((i != 0 && Double.parseDouble(dados[i][6]) < Double.parseDouble(atfd.trim())) && i != 0
+						|| Double.parseDouble(dados[i][7]) < Double.parseDouble(laa.trim())) {
+						
+							resultados[j] = dados[i][0];
+							j++;
+						}
+					case '>':
+						if ((i != 0 && Double.parseDouble(dados[i][6]) < Double.parseDouble(atfd.trim())) && i != 0
+						|| Double.parseDouble(dados[i][7]) > Double.parseDouble(laa.trim())) {
+						
+							resultados[j] = dados[i][0];
+							j++;
+						}
+						
 				}	
-				
-			
-			
+					
+					
+					
+					
+	}
 			}
 			
 			
-		}
+			
+			
+			
+		}	
+			
+		
+				
+			
+		
+			
 		return resultados;
-	}
 	
+	}	
 	
 }
