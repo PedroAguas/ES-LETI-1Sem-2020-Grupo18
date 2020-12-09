@@ -199,10 +199,12 @@ public class GUI {
 
 									def = new Defeitos(ER.getDados());
 									def.defeitos();
-
+									
+									//JPanel aux1 = new JPanel();
 									JTable DefFe = new JTable(def.getresultados(), def.getheader());
 									DefFe.setEnabled(false);
-
+									//aux1.add(DefFe);
+									
 									JList<String> model = new JList<String>(smetodo.getdados());
 									JScrollPane excelfeFinal = new JScrollPane(model);
 									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
