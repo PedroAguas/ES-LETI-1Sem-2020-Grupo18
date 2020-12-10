@@ -143,7 +143,6 @@ public class GUI {
 									lmPanelFinal.setLocation(10, 50);
 									frame.add(lmPanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
-
 								}
 
 							});
