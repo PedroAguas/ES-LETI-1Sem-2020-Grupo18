@@ -218,7 +218,6 @@ public class GUI {
 									fePanelFinal.add(DefFe);
 									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
-									
 								}
 							});
 
