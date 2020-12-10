@@ -1,7 +1,6 @@
 package org.iscte_iul.pt.ProjetoES;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -120,18 +118,29 @@ public class GUI {
 									frame.remove(excel);
 									frameRegra.dispose();
 									lm.dispose();
-
 									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
 											lmTextCYCLO.getText());
-
 									JPanel lmPanelFinal = new JPanel();
 									lmPanelFinal.setLayout(new GridLayout(1, 2));
 
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
+
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
 									JList<String> model = new JList<String>(pmetodo.getdados());
+									JScrollPane tabela = new JScrollPane(DefFe);
+									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									tabela.setWheelScrollingEnabled(true);
+
 									JScrollPane excellmFinal = new JScrollPane(model);
 									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									excellmFinal.setWheelScrollingEnabled(true);
 
 									lmPanelFinal.add(excellmFinal);
+									lmPanelFinal.add(DefFe);
+									lmPanelFinal.setLocation(10, 50);
 									frame.add(lmPanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
 
@@ -165,25 +174,30 @@ public class GUI {
 							JButton feCheck = new JButton("Confirmar");
 							feCheck.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent x) {
-
 									frame.remove(excel);
 									frameRegra.dispose();
 									fe.dispose();
-
 									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
 											feTextLAA.getText());
-
 									JPanel fePanelFinal = new JPanel();
 									fePanelFinal.setLayout(new GridLayout(1, 2));
+
+									def = new Defeitos(ER.getDados());
+									def.defeitos();
+
+									// JPanel aux1 = new JPanel();
+									JTable DefFe = new JTable(def.getresultados(), def.getheader());
+									DefFe.setEnabled(false);
+
+									// aux1.add(DefFe);
 
 									JList<String> model = new JList<String>(smetodo.getdados());
 									JScrollPane excelfeFinal = new JScrollPane(model);
 									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
 									fePanelFinal.add(excelfeFinal);
+									fePanelFinal.add(DefFe);
 									frame.add(fePanelFinal, BorderLayout.CENTER);
 									frame.setVisible(true);
-
 								}
 							});
 
@@ -357,6 +371,7 @@ public class GUI {
 						}
 					}
 				});
+
 				// botao check da frame Regras (frame inicial)
 				JPanel panelSouth = new JPanel();
 				panelSouth.setLayout(new GridLayout(1, 1));
