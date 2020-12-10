@@ -19,6 +19,11 @@ public class GUI {
 	private File selectedFile;
 	private String path;
 	private JScrollPane excel;
+	private JTextField locEditorLogic;
+	private JTextField locEditorNumber;
+	private JTextField cycloEditorLogic;
+	private JTextField cycloEditorNumber;
+	private JTextField editorAndOr;
 
 	public GUI() {
 		frame = new JFrame("Read Excel");
@@ -151,7 +156,7 @@ public class GUI {
 									JScrollPane tabela = new JScrollPane(DefLm);
 									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 									tabela.setWheelScrollingEnabled(true);
-
+									System.out.println(pmetodo.getdados().length);
 									JScrollPane excellmFinal = new JScrollPane(model);
 									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 									excellmFinal.setWheelScrollingEnabled(true);
@@ -229,9 +234,6 @@ public class GUI {
 							fe.add(fePanelButton, BorderLayout.SOUTH);
 						} else {
 
-							// JButton feCheck = new JButton("Confirmar");
-							// feCheck.addActionListener(new ActionListener() {
-							// public void actionPerformed(ActionEvent x) {
 							frame.remove(excel);
 							frameRegra.dispose();
 
@@ -274,16 +276,16 @@ public class GUI {
 										JPanel panelLMRP4linha = new JPanel(new GridLayout(1, 1));
 
 										JLabel labelLOC = new JLabel("LOC");
-										JTextField locEditorLogic = new JTextField();
-										JTextField locEditorNumber = new JTextField();
+										locEditorLogic = new JTextField();
+										locEditorNumber = new JTextField();
 
 										JLabel editorLabel = new JLabel("Escreva and ou or");
-										JTextField editorAndOr = new JTextField();
+										editorAndOr = new JTextField();
 
 										JLabel labelCYCLO = new JLabel("CYCLO");
-										JTextField cycloEditorLogic = new JTextField();
-										JTextField cycloEditorNumber = new JTextField();
-
+										cycloEditorLogic = new JTextField();
+										cycloEditorNumber = new JTextField();
+										
 										panelLMRP1linha.add(labelLOC);
 										panelLMRP1linha.add(locEditorLogic);
 										panelLMRP1linha.add(locEditorNumber);
@@ -296,23 +298,34 @@ public class GUI {
 										JButton checkLMPR = new JButton("Confirmar Regra");
 										checkLMPR.addActionListener(new ActionListener() {
 											public void actionPerformed(ActionEvent x) {
-												/*
-												 * frame.remove(excel); frameRegra.dispose(); pr.dispose();
-												 * 
-												 * //isLongMethod pmetodo = new isLongMethod(ER.getDados(),
-												 * lmTextLOC.getText(), lmTextCYCLO.getText());
-												 * 
-												 * JPanel lmPanelFinal = new JPanel(); lmPanelFinal.setLayout(new
-												 * GridLayout(1, 2));
-												 * 
-												 * //JList<String> model = new JList<String>(pmetodo.getdados());
-												 * //JScrollPane excellmFinal = new JScrollPane(model);
-												 * excellmFinal.setVerticalScrollBarPolicy(JScrollPane.
-												 * VERTICAL_SCROLLBAR_ALWAYS);
-												 * 
-												 * lmPanelFinal.add(excellmFinal); frame.add(lmPanelFinal,
-												 * BorderLayout.CENTER); frame.setVisible(true);
-												 */
+												
+												frame.remove(excel); 
+												frameRegra.dispose(); 
+												pr.dispose();
+
+												JPanel lmRPPanel = new JPanel();
+												lmRPPanel.setLayout(new GridLayout(1, 2));
+												
+												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
+												regrasLM.cria();
+												
+											//	JTable lmPRTable = new JTable(def.getresultados(), def.getheader());
+												//lmPRTable.setEnabled(false);
+
+												JList<String> listLmPr = new JList<String>(regrasLM.getResultados());
+												//JScrollPane paneLmPr = new JScrollPane(listLmPr);
+												//paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+												//paneLmPr.setWheelScrollingEnabled(true);
+
+												JScrollPane paneLmPr = new JScrollPane(listLmPr);
+												paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+												paneLmPr.setWheelScrollingEnabled(true);
+
+												lmRPPanel.add(paneLmPr);
+												//lmRPPanel.add(lmPRTable);
+												lmRPPanel.setLocation(10, 50);
+												frame.add(lmRPPanel, BorderLayout.CENTER);
+												frame.setVisible(true);
 											}
 										});
 
@@ -450,6 +463,20 @@ public class GUI {
 		frame.setVisible(true);
 	}
 
+	/*public String[] tamanhoVetor (String[] xx) {
+		int max = 0;
+		String[] result = new String[500];
+		for (int i=0; i<422; i++) {
+			if(xx[i] == null) {
+				max = i;
+				result
+				
+			}
+		}
+		return ;
+	}*/
+	
+	
 	public static void main(String[] args) {
 		new GUI().open();
 	}
