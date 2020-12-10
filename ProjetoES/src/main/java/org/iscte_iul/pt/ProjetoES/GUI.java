@@ -405,11 +405,11 @@ public class GUI {
 							panelSouth.add(check);
 							frameRegra.add(panelSouth, BorderLayout.SOUTH);
 				}
-			});
-
+					}
+					});
+			
 				JButton Excel = new JButton("Excel");
 				Excel.addActionListener(new ActionListener() {
-
 					public void actionPerformed(ActionEvent x) {
 						JFileChooser jfc = new JFileChooser(".");
 						jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -438,8 +438,9 @@ public class GUI {
 							}
 						}
 					}
-
+				
 				});
+			
 
 				panelButton.add(listaRegras);panelButton.add(Excel);frame.add(panelButton,BorderLayout.SOUTH);
 
