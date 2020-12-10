@@ -309,10 +309,12 @@ public class GUI {
 												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
 												regrasLM.cria();
 												
-											//	JTable lmPRTable = new JTable(def.getresultados(), def.getheader());
-												//lmPRTable.setEnabled(false);
-
-												JList<String> listLmPr = new JList<String>(regrasLM.getResultados());
+												def = new Defeitos(ER.getDados());
+												def.defeitos();
+												JTable lmPRTable = new JTable(def.getresultados(), def.getheader());
+												lmPRTable.setEnabled(false);
+												
+												JList<String> listLmPr = new JList<String>(tamanhoVetorCerto(regrasLM.getResultados()));
 												//JScrollPane paneLmPr = new JScrollPane(listLmPr);
 												//paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 												//paneLmPr.setWheelScrollingEnabled(true);
@@ -322,7 +324,7 @@ public class GUI {
 												paneLmPr.setWheelScrollingEnabled(true);
 
 												lmRPPanel.add(paneLmPr);
-												//lmRPPanel.add(lmPRTable);
+												lmRPPanel.add(lmPRTable);
 												lmRPPanel.setLocation(10, 50);
 												frame.add(lmRPPanel, BorderLayout.CENTER);
 												frame.setVisible(true);
@@ -463,18 +465,20 @@ public class GUI {
 		frame.setVisible(true);
 	}
 
-	/*public String[] tamanhoVetor (String[] xx) {
-		int max = 0;
-		String[] result = new String[500];
+	
+	public String[] tamanhoVetorCerto(String[] xx) {
+		String [] result = new String[500];
 		for (int i=0; i<422; i++) {
 			if(xx[i] == null) {
-				max = i;
-				result
-				
+				result = new String[i];
+				for(int j=0; j<i; j++) {
+					result[j]= xx[j];
+				}
+				break;
 			}
 		}
-		return ;
-	}*/
+		return result;
+	}
 	
 	
 	public static void main(String[] args) {

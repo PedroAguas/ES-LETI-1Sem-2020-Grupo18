@@ -7,7 +7,7 @@ public class LongMehtod {
 	private String cyclo;
 	private char poperador;
 	private char soperador;
-	private String[] resultados = new String[5000];
+	private String[] resultados = new String[500];
 	private String logico;
 	private int j=0;
 

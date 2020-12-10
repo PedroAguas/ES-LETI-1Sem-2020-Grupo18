@@ -9,7 +9,7 @@ public class Regras {
 	private String pAtributo;
 	private String sAtributo;
 	private String codeSmell;
-	private String[] resultados=new String[5000];
+	private String[] resultados=new String[500];
 	private String[][] dados;
 	
 	public Regras(String[][] dados, String nome, char pOperador, char sOperador, String logico, String pAtributo, String sAtributo, String codeSmell) {
