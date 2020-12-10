@@ -93,22 +93,8 @@ public class GUI {
 							frame.setVisible(true);
 
 						} else if (secondRadio.isSelected()) {
-							frame.remove(excel);
-							frameRegra.dispose();
-
-							defI = new Defeitos_Iplasma(ER.getDados());
-							defI.defeitos();
-
-							JPanel pmdPanel = new JPanel();
-							pmdPanel.setLayout(new GridLayout(1, 2));
-
-							JTable pmdTable = new JTable(defI.getresultados(), defI.getheader());
-							pmdTable.setEnabled(false);
-
-							JScrollPane table = new JScrollPane(pmdTable);
-
-							frame.add(table);
-							frame.setVisible(true);
+							
+							
 
 						} else if (thirdRadio.isSelected()) {
 							JDialog lm = new JDialog(frameRegra, "Parametros Long Method");
