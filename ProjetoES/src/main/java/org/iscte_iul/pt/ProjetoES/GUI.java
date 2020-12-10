@@ -93,8 +93,6 @@ public class GUI {
 						} else if (secondRadio.isSelected()) {
 
 
-
-
 						} else if (thirdRadio.isSelected()) {
 							JDialog lm = new JDialog(frameRegra, "Parametros Long Method");
 							lm.setLayout(new BorderLayout());
