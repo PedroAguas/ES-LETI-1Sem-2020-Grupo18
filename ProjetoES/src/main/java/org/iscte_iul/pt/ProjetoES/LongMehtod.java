@@ -11,11 +11,11 @@ public class LongMehtod {
 	private char soperador;
 	private String[] resultados = new String[500];
 	private String logico;
-	private int j=0;
+	private int j = 0;
 	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
 
 	public LongMehtod(String[][] dados, String loc, String cyclo, char poperador, char soperador, String logico) {
-		
+
 		this.dados = dados;
 		this.loc = loc;
 		this.cyclo = cyclo;
@@ -33,25 +33,25 @@ public class LongMehtod {
 
 				switch (soperador) {
 				case '>':
-					for (int i = 0; i < dados.length-1; i++) {
+					for (int i = 0; i < dados.length - 1; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
 					}
 					break;
 				case '<':
-					for (int i = 0; i < dados.length-1; i++) {
+					for (int i = 0; i < dados.length - 1; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
 					}
@@ -62,14 +62,14 @@ public class LongMehtod {
 			case '<':
 				switch (soperador) {
 				case '>':
-					for (int i = 0; i < dados.length-1; i++) {
+					for (int i = 0; i < dados.length - 1; i++) {
 						if ((Integer.parseInt(dados[i][4]) < Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
-						lista.add(false);
+						} else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -80,8 +80,8 @@ public class LongMehtod {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
-						lista.add(false);
+						} else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -94,18 +94,18 @@ public class LongMehtod {
 			switch (poperador) {
 			case '>':
 				switch (soperador) {
-				
+
 				case '>':
-					for (int i = 0; i < dados.length-1; i++) {
+					for (int i = 0; i < dados.length - 1; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								|| Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
-						
+
 					}
 					break;
 				case '<':
@@ -115,7 +115,7 @@ public class LongMehtod {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
 					}
@@ -125,7 +125,7 @@ public class LongMehtod {
 
 			case '<':
 				switch (soperador) {
-				
+
 				case '>':
 					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) < Integer.parseInt(loc.trim()))
@@ -133,7 +133,7 @@ public class LongMehtod {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
 					}
@@ -145,7 +145,7 @@ public class LongMehtod {
 							resultados[j] = dados[i][0];
 							j++;
 							lista.add(true);
-						}else {
+						} else {
 							lista.add(false);
 						}
 					}
@@ -157,7 +157,8 @@ public class LongMehtod {
 		}
 		return resultados;
 	}
-	public ArrayList<Boolean> getLista(){
+
+	public ArrayList<Boolean> getLista() {
 		return lista;
 	}
 

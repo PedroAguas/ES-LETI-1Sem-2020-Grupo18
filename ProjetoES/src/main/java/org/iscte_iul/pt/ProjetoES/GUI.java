@@ -2,10 +2,12 @@ package org.iscte_iul.pt.ProjetoES;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -24,6 +26,7 @@ public class GUI {
 	private JTextField cycloEditorLogic;
 	private JTextField cycloEditorNumber;
 	private JTextField editorAndOr;
+	private JTextField ferramenta;
 
 	public GUI() {
 		frame = new JFrame("Read Excel");
@@ -43,7 +46,7 @@ public class GUI {
 		listaRegras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent x) {
 
-				JDialog frameRegra = new JDialog(frame, "Parametros Long Method");
+				JDialog frameRegra = new JDialog(frame, "Escolher metrica");
 				frameRegra.setLayout(new BorderLayout());
 				frameRegra.setLocation(550, 200);
 				frameRegra.setVisible(true);
@@ -257,7 +260,7 @@ public class GUI {
 										pr.dispose();
 
 										JDialog prDefineParametros = new JDialog(frameRegra, "Personalizar Regras");
-										prDefineParametros.setLayout(new GridLayout(4, 1));
+										prDefineParametros.setLayout(new GridLayout(5, 1));
 										prDefineParametros.setLocation(600, 250);
 										prDefineParametros.setVisible(true);
 										prDefineParametros.setSize(300, 175);
@@ -265,18 +268,22 @@ public class GUI {
 										JPanel panelLMRP1linha = new JPanel(new GridLayout(1, 3));
 										JPanel panelLMRP2linha = new JPanel(new GridLayout(1, 2));
 										JPanel panelLMRP3linha = new JPanel(new GridLayout(1, 3));
-										JPanel panelLMRP4linha = new JPanel(new GridLayout(1, 1));
+										JPanel panelLMRP4linha = new JPanel(new GridLayout(1, 2));
+										JPanel panelLMRP5linha = new JPanel(new GridLayout(1, 1));
 
-										JLabel labelLOC = new JLabel("LOC");
+										JLabel labelLOC = new JLabel("LOC (Ex: < 31");
 										locEditorLogic = new JTextField();
 										locEditorNumber = new JTextField();
 
 										JLabel editorLabel = new JLabel("Escreva and ou or");
 										editorAndOr = new JTextField();
 
-										JLabel labelCYCLO = new JLabel("CYCLO");
+										JLabel labelCYCLO = new JLabel("CYCLO (Ex: > 52");
 										cycloEditorLogic = new JTextField();
 										cycloEditorNumber = new JTextField();
+
+										JLabel labelFerramenta = new JLabel("PMD ou IPlasma");
+										ferramenta = new JTextField();
 
 										panelLMRP1linha.add(labelLOC);
 										panelLMRP1linha.add(locEditorLogic);
@@ -286,55 +293,72 @@ public class GUI {
 										panelLMRP3linha.add(labelCYCLO);
 										panelLMRP3linha.add(cycloEditorLogic);
 										panelLMRP3linha.add(cycloEditorNumber);
+										panelLMRP4linha.add(labelFerramenta);
+										panelLMRP4linha.add(ferramenta);
 
+										
+										//Ver aqui miguel 
 										JButton checkLMPR = new JButton("Confirmar Regra");
 										checkLMPR.addActionListener(new ActionListener() {
 											public void actionPerformed(ActionEvent x) {
-
 												frame.remove(excel);
 												frameRegra.dispose();
 												pr.dispose();
-
-												JPanel lmRPPanel = new JPanel();
-												lmRPPanel.setLayout(new GridLayout(1, 2));
-
-												Regras regrasLM = new Regras(ER.getDados(), "Long Method",
-														locEditorLogic.getText().charAt(0),
-														cycloEditorLogic.getText().charAt(0),
-														editorAndOr.getText().trim(), locEditorNumber.getText().trim(),
-														cycloEditorNumber.getText().trim(), "LongMethod");
+												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
 												regrasLM.cria();
+												
+												if (ferramenta.getText().trim().equals("PMD") ){
+													
+													DefeitosPrPMD defPrLm = new DefeitosPrPMD(ER.getDados(), regrasLM.getLista());
+													defPrLm.defeitos();
 
-												def = new Defeitos(ER.getDados());
-												def.defeitos();
-												JTable lmPRTable = new JTable(def.getresultados(), def.getheader());
-												lmPRTable.setEnabled(false);
+													JTable lmPRTable = new JTable(defPrLm.getresultados(), defPrLm.getheader());
+													lmPRTable.setEnabled(false);
+													JScrollPane tablePRLM = new JScrollPane(lmPRTable);
 
-												JList<String> listLmPr = new JList<String>(
-														tamanhoVetorCerto(regrasLM.getResultados()));
-												// JScrollPane paneLmPr = new JScrollPane(listLmPr);
-												// paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-												// paneLmPr.setWheelScrollingEnabled(true);
+													JList<String> listLmPr = new JList<String>(tamanhoVetorCerto(regrasLM.getResultados()));
+													JScrollPane paneLmPr = new JScrollPane(listLmPr);
+													paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+													paneLmPr.setWheelScrollingEnabled(true);
 
-												JScrollPane paneLmPr = new JScrollPane(listLmPr);
-												paneLmPr.setVerticalScrollBarPolicy(
-														JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-												paneLmPr.setWheelScrollingEnabled(true);
+													JSplitPane splitLM = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneLmPr, tablePRLM);
+													splitLM.setDividerLocation(100);
+													splitLM.setVisible(true);
 
-												lmRPPanel.add(paneLmPr);
-												lmRPPanel.add(lmPRTable);
-												lmRPPanel.setLocation(10, 50);
-												frame.add(lmRPPanel, BorderLayout.CENTER);
-												frame.setVisible(true);
+													frame.add(splitLM, BorderLayout.CENTER);
+													frame.setVisible(true);
+													
+												} else {
+													
+													DefeitosPrIPlasma defPrIP = new DefeitosPrIPlasma(ER.getDados(), regrasLM.getLista());
+													defPrIP.defeitos();
+
+													JTable lmPRTable = new JTable(defPrIP.getresultados(), defPrIP.getheader());
+													lmPRTable.setEnabled(false);
+													JScrollPane tablePRLM = new JScrollPane(lmPRTable);
+
+													JList<String> listIPPr = new JList<String> (tamanhoVetorCerto(regrasLM.getResultados()));
+													JScrollPane paneIpPr = new JScrollPane(listIPPr);
+													paneIpPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+													paneIpPr.setWheelScrollingEnabled(true);
+
+													JSplitPane splitLM = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneIpPr, tablePRLM);
+													splitLM.setDividerLocation(100);
+													splitLM.setVisible(true);
+
+													frame.add(splitLM, BorderLayout.CENTER);
+													frame.setVisible(true);
+												}
 											}
 										});
 
-										panelLMRP4linha.add(checkLMPR);
+										panelLMRP5linha.add(checkLMPR);
 
 										prDefineParametros.add(panelLMRP1linha);
 										prDefineParametros.add(panelLMRP2linha);
 										prDefineParametros.add(panelLMRP3linha);
 										prDefineParametros.add(panelLMRP4linha);
+										prDefineParametros.add(panelLMRP5linha);
 
 									} else {
 										frame.remove(excel);

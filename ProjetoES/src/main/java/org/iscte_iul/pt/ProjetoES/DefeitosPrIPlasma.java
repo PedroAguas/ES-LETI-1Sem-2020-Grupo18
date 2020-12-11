@@ -21,10 +21,10 @@ public class DefeitosPrIPlasma {
         }
 
         public void defeitos() {
-            for (int i = 0; i < dados.length; i++) {
+            for (int i = 0; i <= dados.length; i++) {
                 if (verdades.get(i) == true && Boolean.parseBoolean(dados[i][9]) == true) {
                     DCI++;
-                } else if ((verdades.get(i) == false) && Boolean.parseBoolean(dados[i][9]) == true) {
+                } else if (verdades.get(i) == false && Boolean.parseBoolean(dados[i][9]) == true) {
                     DII++;
                 } else if (verdades.get(i) == false && Boolean.parseBoolean(dados[i][9]) == false) {
                     ADCI++;
