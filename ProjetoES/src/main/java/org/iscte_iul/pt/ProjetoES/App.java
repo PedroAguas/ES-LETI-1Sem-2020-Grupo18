@@ -6,8 +6,8 @@ package org.iscte_iul.pt.ProjetoES;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main( String[] args ){
+        GUI gui = new GUI();
+        gui.open();
     }
 }

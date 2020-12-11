@@ -6,17 +6,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class FeatureEnvy {
+class FeatureEnvyTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		System.out.println("ola motherfuckers");
-		System.out.println("teste 3");
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		System.out.println("teste 2");
 
 	}
 

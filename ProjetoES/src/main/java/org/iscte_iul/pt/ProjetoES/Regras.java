@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Regras {
 	
-	private String nome;
 	private char pOperador;
 	private char sOperador;
 	private String logico;
@@ -15,10 +14,9 @@ public class Regras {
 	private String[][] dados;
 	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
 	
-	public Regras(String[][] dados, String nome, char pOperador, char sOperador, String logico, String pAtributo, String sAtributo, String codeSmell) {
+	public Regras(String[][] dados, char pOperador, char sOperador, String logico, String pAtributo, String sAtributo, String codeSmell) {
 		
 		this.dados = dados;
-		this.nome = nome;
 		this.pOperador = pOperador;
 		this.sOperador = sOperador;
 		this.logico = logico;
@@ -30,7 +28,7 @@ public class Regras {
 	
 	public void cria() {
 		if(codeSmell=="LongMethod") {
-			LongMehtod lm = new LongMehtod(dados, pAtributo, sAtributo, pOperador,sOperador, logico);
+			LongMehtod lm = new LongMehtod(dados, pAtributo, sAtributo, pOperador, sOperador, logico);
 			resultados =lm.operar();
 			lista.addAll(lm.getLista());
 			System.out.println(resultados[0] +"|||" + resultados[1] + "|||" + resultados[499]);

@@ -311,7 +311,7 @@ public class GUI {
 												frameRegra.dispose();
 												pr.dispose();
 												
-												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
+												Regras regrasLM = new Regras(ER.getDados(), locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
 												regrasLM.cria();
 												
 												if (ferramenta.getText().trim().equals("PMD") ){
@@ -417,7 +417,7 @@ public class GUI {
 												frameRegra.dispose();
 												pr.dispose();
 												
-												Regras regrasFe = new Regras(ER.getDados(), "Feature Envy", atfdEditorLogicFe.getText().charAt(0), laaEditorLogicFe.getText().charAt(0), editorAndOrFe.getText().trim(), atfdEditorNumberFe.getText().trim(), laaloEditorNumberFe.getText().trim(), "FeatureEnvy");
+												Regras regrasFe = new Regras(ER.getDados(), atfdEditorLogicFe.getText().charAt(0), laaEditorLogicFe.getText().charAt(0), editorAndOrFe.getText().trim(), atfdEditorNumberFe.getText().trim(), laaloEditorNumberFe.getText().trim(), "FeatureEnvy");
 												regrasFe.cria();
 												
 												if (ferramentaFe.getText().trim().equals("PMD") ){
