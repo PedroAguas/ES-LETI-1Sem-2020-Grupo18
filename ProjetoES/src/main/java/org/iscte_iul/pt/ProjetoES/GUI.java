@@ -97,22 +97,22 @@ public class GUI {
 
 						} else if (secondRadio.isSelected()) {
 							frame.remove(excel);
-                            frameRegra.dispose();
+							frameRegra.dispose();
 
-                            defI = new Defeitos_Iplasma(ER.getDados());
-                            defI.defeitos();
+							defI = new Defeitos_Iplasma(ER.getDados());
+							defI.defeitos();
 
-                            JPanel pmdPanel = new JPanel();
-                            pmdPanel.setLayout(new GridLayout(1, 2));
+							JPanel pmdPanel = new JPanel();
+							pmdPanel.setLayout(new GridLayout(1, 2));
 
-                            JTable pmdTable = new JTable(defI.getresultados(), defI.getheader());
-                            pmdTable.setEnabled(false);
+							JTable pmdTable = new JTable(defI.getresultados(), defI.getheader());
+							pmdTable.setEnabled(false);
 
-                            JScrollPane table = new JScrollPane(pmdTable);
+							JScrollPane table = new JScrollPane(pmdTable);
 
-                            frame.add(table);
-                            frame.setVisible(true);
-                            
+							frame.add(table);
+							frame.setVisible(true);
+
 						} else if (thirdRadio.isSelected()) {
 							JDialog lm = new JDialog(frameRegra, "Parametros Long Method");
 							lm.setLayout(new BorderLayout());
@@ -140,31 +140,30 @@ public class GUI {
 									frame.remove(excel);
 									frameRegra.dispose();
 									lm.dispose();
-									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
-											lmTextCYCLO.getText());
 
 									JPanel lmPanelFinal = new JPanel();
-									lmPanelFinal.setLayout(new GridLayout(1, 2));
+									lmPanelFinal.setLayout(new GridLayout(1, 1));
 
 									def = new Defeitos(ER.getDados());
 									def.defeitos();
-
 									JTable DefLm = new JTable(def.getresultados(), def.getheader());
 									DefLm.setEnabled(false);
 
-									JList<String> model = new JList<String>(pmetodo.getdados());
-									JScrollPane tabela = new JScrollPane(DefLm);
-									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									tabela.setWheelScrollingEnabled(true);
-									System.out.println(pmetodo.getdados().length);
-									JScrollPane excellmFinal = new JScrollPane(model);
-									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									excellmFinal.setWheelScrollingEnabled(true);
+									JScrollPane tableLM = new JScrollPane(DefLm);
 
-									lmPanelFinal.add(excellmFinal);
-									lmPanelFinal.add(DefLm);
-									lmPanelFinal.setLocation(10, 50);
-									frame.add(lmPanelFinal, BorderLayout.CENTER);
+									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
+											lmTextCYCLO.getText());
+									JList<String> listLM = new JList<String>(tamanhoVetorCerto(pmetodo.getdados()));
+									JScrollPane listaLMFinal = new JScrollPane(listLM);
+									listaLMFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									listaLMFinal.setWheelScrollingEnabled(true);
+
+									JSplitPane splitLM = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listaLMFinal,
+											tableLM);
+									splitLM.setDividerLocation(100);
+									splitLM.setVisible(true);
+
+									frame.add(splitLM, BorderLayout.CENTER);
 									frame.setVisible(true);
 								}
 
@@ -200,32 +199,25 @@ public class GUI {
 									frameRegra.dispose();
 									fe.dispose();
 
-									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
-											feTextLAA.getText());
-
-									JPanel fePanelFinal = new JPanel();
-									fePanelFinal.setLayout(new GridLayout(1, 2));
-
 									def = new Defeitos(ER.getDados());
 									def.defeitos();
 
-									// JPanel aux1 = new JPanel();
 									JTable DefFe = new JTable(def.getresultados(), def.getheader());
 									DefFe.setEnabled(false);
+									JScrollPane tableFE = new JScrollPane(DefFe);
 
-									// aux1.add(DefFe);
+									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
+											feTextLAA.getText());
+									JList<String> listFE = new JList<String>(tamanhoVetorCerto(smetodo.getdados()));
+									JScrollPane listaFEFinal = new JScrollPane(listFE);
+									listaFEFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-									// JPanel aux1 = new JPanel();
-									// JTable DefFe = new JTable(def.getresultados(), def.getheader());
-									// DefFe.setEnabled(false);
-									// aux1.add(DefFe);
+									JSplitPane splitFE = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listaFEFinal,
+											tableFE);
+									splitFE.setDividerLocation(100);
+									splitFE.setVisible(true);
 
-									JList<String> model = new JList<String>(smetodo.getdados());
-									JScrollPane excelfeFinal = new JScrollPane(model);
-									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									fePanelFinal.add(excelfeFinal);
-									fePanelFinal.add(DefFe);
-									frame.add(fePanelFinal, BorderLayout.CENTER);
+									frame.add(splitFE, BorderLayout.CENTER);
 									frame.setVisible(true);
 								}
 							});
@@ -285,7 +277,7 @@ public class GUI {
 										JLabel labelCYCLO = new JLabel("CYCLO");
 										cycloEditorLogic = new JTextField();
 										cycloEditorNumber = new JTextField();
-										
+
 										panelLMRP1linha.add(labelLOC);
 										panelLMRP1linha.add(locEditorLogic);
 										panelLMRP1linha.add(locEditorNumber);
@@ -298,29 +290,35 @@ public class GUI {
 										JButton checkLMPR = new JButton("Confirmar Regra");
 										checkLMPR.addActionListener(new ActionListener() {
 											public void actionPerformed(ActionEvent x) {
-												
-												frame.remove(excel); 
-												frameRegra.dispose(); 
+
+												frame.remove(excel);
+												frameRegra.dispose();
 												pr.dispose();
 
 												JPanel lmRPPanel = new JPanel();
 												lmRPPanel.setLayout(new GridLayout(1, 2));
-												
-												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
+
+												Regras regrasLM = new Regras(ER.getDados(), "Long Method",
+														locEditorLogic.getText().charAt(0),
+														cycloEditorLogic.getText().charAt(0),
+														editorAndOr.getText().trim(), locEditorNumber.getText().trim(),
+														cycloEditorNumber.getText().trim(), "LongMethod");
 												regrasLM.cria();
-												
+
 												def = new Defeitos(ER.getDados());
 												def.defeitos();
 												JTable lmPRTable = new JTable(def.getresultados(), def.getheader());
 												lmPRTable.setEnabled(false);
-												
-												JList<String> listLmPr = new JList<String>(tamanhoVetorCerto(regrasLM.getResultados()));
-												//JScrollPane paneLmPr = new JScrollPane(listLmPr);
-												//paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-												//paneLmPr.setWheelScrollingEnabled(true);
+
+												JList<String> listLmPr = new JList<String>(
+														tamanhoVetorCerto(regrasLM.getResultados()));
+												// JScrollPane paneLmPr = new JScrollPane(listLmPr);
+												// paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+												// paneLmPr.setWheelScrollingEnabled(true);
 
 												JScrollPane paneLmPr = new JScrollPane(listLmPr);
-												paneLmPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+												paneLmPr.setVerticalScrollBarPolicy(
+														JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 												paneLmPr.setWheelScrollingEnabled(true);
 
 												lmRPPanel.add(paneLmPr);
@@ -465,22 +463,20 @@ public class GUI {
 		frame.setVisible(true);
 	}
 
-	
 	public String[] tamanhoVetorCerto(String[] xx) {
-		String [] result = new String[500];
-		for (int i=0; i<422; i++) {
-			if(xx[i] == null) {
+		String[] result = new String[500];
+		for (int i = 0; i < 422; i++) {
+			if (xx[i] == null) {
 				result = new String[i];
-				for(int j=0; j<i; j++) {
-					result[j]= xx[j];
+				for (int j = 0; j < i; j++) {
+					result[j] = xx[j];
 				}
 				break;
 			}
 		}
 		return result;
 	}
-	
-	
+
 	public static void main(String[] args) {
 		new GUI().open();
 	}
