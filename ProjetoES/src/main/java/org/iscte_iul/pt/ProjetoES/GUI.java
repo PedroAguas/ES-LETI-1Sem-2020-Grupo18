@@ -140,31 +140,28 @@ public class GUI {
 									frame.remove(excel);
 									frameRegra.dispose();
 									lm.dispose();
-									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(),
-											lmTextCYCLO.getText());
 
 									JPanel lmPanelFinal = new JPanel();
-									lmPanelFinal.setLayout(new GridLayout(1, 2));
+									lmPanelFinal.setLayout(new GridLayout(1, 1));
 
 									def = new Defeitos(ER.getDados());
 									def.defeitos();
-
 									JTable DefLm = new JTable(def.getresultados(), def.getheader());
 									DefLm.setEnabled(false);
-
-									JList<String> model = new JList<String>(pmetodo.getdados());
-									JScrollPane tabela = new JScrollPane(DefLm);
-									tabela.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									tabela.setWheelScrollingEnabled(true);
-									System.out.println(pmetodo.getdados().length);
-									JScrollPane excellmFinal = new JScrollPane(model);
-									excellmFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									excellmFinal.setWheelScrollingEnabled(true);
-
-									lmPanelFinal.add(excellmFinal);
-									lmPanelFinal.add(DefLm);
-									lmPanelFinal.setLocation(10, 50);
-									frame.add(lmPanelFinal, BorderLayout.CENTER);
+									
+									JScrollPane tableLM = new JScrollPane(DefLm);
+									
+									isLongMethod pmetodo = new isLongMethod(ER.getDados(), lmTextLOC.getText(), lmTextCYCLO.getText());
+									JList<String> listLM = new JList<String>(tamanhoVetorCerto(pmetodo.getdados()));
+									JScrollPane listaLMFinal = new JScrollPane(listLM);
+									listaLMFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+									listaLMFinal.setWheelScrollingEnabled(true);
+									
+									JSplitPane splitLM = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listaLMFinal, tableLM);
+									splitLM.setDividerLocation(100);
+									splitLM.setVisible(true);
+									
+									frame.add(splitLM, BorderLayout.CENTER);
 									frame.setVisible(true);
 								}
 
@@ -200,32 +197,23 @@ public class GUI {
 									frameRegra.dispose();
 									fe.dispose();
 
-									isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(),
-											feTextLAA.getText());
-
-									JPanel fePanelFinal = new JPanel();
-									fePanelFinal.setLayout(new GridLayout(1, 2));
-
 									def = new Defeitos(ER.getDados());
 									def.defeitos();
 
-									// JPanel aux1 = new JPanel();
 									JTable DefFe = new JTable(def.getresultados(), def.getheader());
 									DefFe.setEnabled(false);
-
-									// aux1.add(DefFe);
-
-									// JPanel aux1 = new JPanel();
-									// JTable DefFe = new JTable(def.getresultados(), def.getheader());
-									// DefFe.setEnabled(false);
-									// aux1.add(DefFe);
-
-									JList<String> model = new JList<String>(smetodo.getdados());
-									JScrollPane excelfeFinal = new JScrollPane(model);
-									excelfeFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-									fePanelFinal.add(excelfeFinal);
-									fePanelFinal.add(DefFe);
-									frame.add(fePanelFinal, BorderLayout.CENTER);
+									JScrollPane tableFE = new JScrollPane(DefFe);
+                                    
+                                    isFeatureEnvy smetodo = new isFeatureEnvy(ER.getDados(), feTextATFD.getText(), feTextLAA.getText());
+                                    JList<String> listFE = new JList<String>(tamanhoVetorCerto(smetodo.getdados()));
+                                    JScrollPane listaFEFinal = new JScrollPane(listFE);
+                                    listaFEFinal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                                   
+                                    JSplitPane splitFE = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listaFEFinal, tableFE);
+                                    splitFE.setDividerLocation(100);
+                                    splitFE.setVisible(true);
+						
+                                    frame.add(splitFE, BorderLayout.CENTER);
 									frame.setVisible(true);
 								}
 							});
