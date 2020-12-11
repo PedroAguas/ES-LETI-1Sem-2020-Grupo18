@@ -1,5 +1,7 @@
 package org.iscte_iul.pt.ProjetoES;
 
+import java.util.ArrayList;
+
 public class LongMehtod {
 
 	private String[][] dados;
@@ -10,6 +12,7 @@ public class LongMehtod {
 	private String[] resultados = new String[500];
 	private String logico;
 	private int j=0;
+	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
 
 	public LongMehtod(String[][] dados, String loc, String cyclo, char poperador, char soperador, String logico) {
 		
@@ -35,6 +38,9 @@ public class LongMehtod {
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -44,6 +50,9 @@ public class LongMehtod {
 								&& Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -58,6 +67,9 @@ public class LongMehtod {
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+						lista.add(false);
 						}
 					}
 					break;
@@ -67,6 +79,9 @@ public class LongMehtod {
 								&& Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+						lista.add(false);
 						}
 					}
 					break;
@@ -86,7 +101,11 @@ public class LongMehtod {
 								|| Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
+						
 					}
 					break;
 				case '<':
@@ -95,6 +114,9 @@ public class LongMehtod {
 								|| Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -110,6 +132,9 @@ public class LongMehtod {
 								|| Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -119,6 +144,9 @@ public class LongMehtod {
 								|| Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
 							j++;
+							lista.add(true);
+						}else {
+							lista.add(false);
 						}
 					}
 					break;
@@ -128,6 +156,9 @@ public class LongMehtod {
 			break;
 		}
 		return resultados;
+	}
+	public ArrayList<Boolean> getLista(){
+		return lista;
 	}
 
 }
