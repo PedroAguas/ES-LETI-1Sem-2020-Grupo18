@@ -21,6 +21,7 @@ public class DefeitosPrPMD {
         }
 
         public void defeitos() {
+        	System.out.println(verdades.size()+" primeiro: " + verdades.get(verdades.size()-1) + " ajdsbuas "+ dados.length+ " primeiro: " + dados[dados.length-2][10]);
             for (int i = 0; i < dados.length; i++) {
                 if (verdades.get(i) == true && Boolean.parseBoolean(dados[i][10]) == true) {
                     DCI++;
@@ -38,6 +39,7 @@ public class DefeitosPrPMD {
             resultados[3][1] = Integer.toString(ADII);
 
             System.out.println("DCI " + DCI+ " DII " + DII+ " DCI " + ADCI+ " ADII " + ADII);
+            
 
         }
 
