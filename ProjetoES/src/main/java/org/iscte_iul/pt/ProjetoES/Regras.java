@@ -35,9 +35,9 @@ public class Regras {
 			lista.addAll(lm.getLista());
 			System.out.println(resultados[0] +"|||" + resultados[1] + "|||" + resultados[499]);
 		}else if (codeSmell=="FeatureEnvy") {
-			FeatureEnvy fe = new FeatureEnvy(pAtributo, sAtributo, pOperador, sOperador, logico);
-			resultados=fe.operar(dados);
-			//lista.addAll(fe.getLista());
+			FeatureEnvy fe = new FeatureEnvy(dados, pAtributo, sAtributo, pOperador, sOperador, logico);
+			resultados=fe.operar();
+			lista.addAll(fe.getLista());
 		}
 		
 	}

@@ -33,7 +33,7 @@ public class LongMehtod {
 
 				switch (soperador) {
 				case '>':
-					for (int i = 0; i < dados.length ; i++) {
+					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
@@ -45,7 +45,7 @@ public class LongMehtod {
 					}
 					break;
 				case '<':
-					for (int i = 0; i < dados.length ; i++) {
+					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) < Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
@@ -62,7 +62,7 @@ public class LongMehtod {
 			case '<':
 				switch (soperador) {
 				case '>':
-					for (int i = 0; i < dados.length ; i++) {
+					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) < Integer.parseInt(loc.trim()))
 								&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
@@ -73,6 +73,7 @@ public class LongMehtod {
 						}
 					}
 					break;
+					
 				case '<':
 					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) < Integer.parseInt(loc.trim()))
@@ -96,7 +97,7 @@ public class LongMehtod {
 				switch (soperador) {
 
 				case '>':
-					for (int i = 0; i < dados.length ; i++) {
+					for (int i = 0; i < dados.length; i++) {
 						if ((Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim()))
 								|| Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 							resultados[j] = dados[i][0];
@@ -122,7 +123,7 @@ public class LongMehtod {
 					break;
 				}
 				break;
-			  case '<':
+			case '<':
 				switch (soperador) {
 
 				case '>':

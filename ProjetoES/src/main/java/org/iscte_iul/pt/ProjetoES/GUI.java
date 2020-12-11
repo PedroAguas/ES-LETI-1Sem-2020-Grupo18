@@ -27,6 +27,12 @@ public class GUI {
 	private JTextField cycloEditorNumber;
 	private JTextField editorAndOr;
 	private JTextField ferramenta;
+	private JTextField laaEditorLogicFe;
+	private JTextField laaloEditorNumberFe;
+	private JTextField editorAndOrFe;
+	private JTextField atfdEditorLogicFe;
+	private JTextField atfdEditorNumberFe;
+	private JTextField ferramentaFe;
 
 	public GUI() {
 		frame = new JFrame("Read Excel");
@@ -304,6 +310,7 @@ public class GUI {
 												frame.remove(excel);
 												frameRegra.dispose();
 												pr.dispose();
+												
 												Regras regrasLM = new Regras(ER.getDados(), "Long Method", locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
 												regrasLM.cria();
 												
@@ -329,7 +336,6 @@ public class GUI {
 													frame.setVisible(true);
 													
 												} else {
-													
 													DefeitosPrIPlasma defPrIP = new DefeitosPrIPlasma(ER.getDados(), regrasLM.getLista());
 													defPrIP.defeitos();
 
@@ -342,11 +348,11 @@ public class GUI {
 													paneIpPr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 													paneIpPr.setWheelScrollingEnabled(true);
 
-													JSplitPane splitLM = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneIpPr, tablePRLM);
-													splitLM.setDividerLocation(100);
-													splitLM.setVisible(true);
+													JSplitPane splitLMIp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneIpPr, tablePRLM);
+													splitLMIp.setDividerLocation(100);
+													splitLMIp.setVisible(true);
 
-													frame.add(splitLM, BorderLayout.CENTER);
+													frame.add(splitLMIp, BorderLayout.CENTER);
 													frame.setVisible(true);
 												}
 											}
@@ -366,7 +372,7 @@ public class GUI {
 										pr.dispose();
 
 										JDialog feDefineParametros = new JDialog(frameRegra, "Personalizar Regras");
-										feDefineParametros.setLayout(new GridLayout(4, 1));
+										feDefineParametros.setLayout(new GridLayout(5, 1));
 										feDefineParametros.setLocation(600, 250);
 										feDefineParametros.setVisible(true);
 										feDefineParametros.setSize(300, 175);
@@ -374,57 +380,97 @@ public class GUI {
 										JPanel panelFERP1linha = new JPanel(new GridLayout(1, 3));
 										JPanel panelFERP2linha = new JPanel(new GridLayout(1, 2));
 										JPanel panelFERP3linha = new JPanel(new GridLayout(1, 3));
-										JPanel panelFERP4linha = new JPanel(new GridLayout(1, 1));
+										JPanel panelFERP4linha = new JPanel(new GridLayout(1, 2));
+										JPanel panelFERP5linha = new JPanel(new GridLayout(1, 1));
 
-										JLabel labelATFD = new JLabel("ATFD");
-										JTextField atfdEditorLogic = new JTextField();
-										JTextField atfdEditorNumber = new JTextField();
+										JLabel labelATFD = new JLabel("ATFD (Ex: < 31");
+										atfdEditorLogicFe = new JTextField();
+										atfdEditorNumberFe = new JTextField();
 
-										JLabel editorLabel = new JLabel("Escreva and ou or");
-										JTextField editorAndOr = new JTextField();
+										JLabel editorLabelFe = new JLabel("Escreva and ou or");
+										editorAndOrFe = new JTextField();
 
-										JLabel labelLAA = new JLabel("CYCLO");
-										JTextField laaEditorLogic = new JTextField();
-										JTextField laaloEditorNumber = new JTextField();
+										JLabel labelLAA = new JLabel("LAA (Ex: > 52");
+										laaEditorLogicFe = new JTextField();
+										laaloEditorNumberFe = new JTextField();
+										
+										JLabel labelFerramentaFe = new JLabel("PMD ou IPlasma");
+										ferramentaFe = new JTextField();
+										
 
 										panelFERP1linha.add(labelATFD);
-										panelFERP1linha.add(atfdEditorLogic);
-										panelFERP1linha.add(atfdEditorNumber);
-										panelFERP2linha.add(editorLabel);
-										panelFERP2linha.add(editorAndOr);
+										panelFERP1linha.add(atfdEditorLogicFe);
+										panelFERP1linha.add(atfdEditorNumberFe);
+										panelFERP2linha.add(editorLabelFe);
+										panelFERP2linha.add(editorAndOrFe);
 										panelFERP3linha.add(labelLAA);
-										panelFERP3linha.add(laaEditorLogic);
-										panelFERP3linha.add(laaloEditorNumber);
+										panelFERP3linha.add(laaEditorLogicFe);
+										panelFERP3linha.add(laaloEditorNumberFe);
+										panelFERP4linha.add(labelFerramentaFe);
+										panelFERP4linha.add(ferramentaFe);
+										
 
 										JButton checkFEPR = new JButton("Confirmar Regra");
 										checkFEPR.addActionListener(new ActionListener() {
 											public void actionPerformed(ActionEvent x) {
-												/*
-												 * frame.remove(excel); frameRegra.dispose(); pr.dispose();
-												 * 
-												 * //isLongMethod pmetodo = new isLongMethod(ER.getDados(),
-												 * lmTextLOC.getText(), lmTextCYCLO.getText());
-												 * 
-												 * JPanel lmPanelFinal = new JPanel(); lmPanelFinal.setLayout(new
-												 * GridLayout(1, 2));
-												 * 
-												 * //JList<String> model = new JList<String>(pmetodo.getdados());
-												 * //JScrollPane excellmFinal = new JScrollPane(model);
-												 * excellmFinal.setVerticalScrollBarPolicy(JScrollPane.
-												 * VERTICAL_SCROLLBAR_ALWAYS);
-												 * 
-												 * lmPanelFinal.add(excellmFinal); frame.add(lmPanelFinal,
-												 * BorderLayout.CENTER); frame.setVisible(true);
-												 */
+												frame.remove(excel);
+												frameRegra.dispose();
+												pr.dispose();
+												
+												Regras regrasFe = new Regras(ER.getDados(), "Feature Envy", atfdEditorLogicFe.getText().charAt(0), laaEditorLogicFe.getText().charAt(0), editorAndOrFe.getText().trim(), atfdEditorNumberFe.getText().trim(), laaloEditorNumberFe.getText().trim(), "FeatureEnvy");
+												regrasFe.cria();
+												
+												if (ferramentaFe.getText().trim().equals("PMD") ){
+													DefeitosPrPMD defPrFe = new DefeitosPrPMD(ER.getDados(), regrasFe.getLista());
+													defPrFe.defeitos();
+
+													JTable fePRTablePmd = new JTable(defPrFe.getresultados(), defPrFe.getheader());
+													fePRTablePmd.setEnabled(false);
+													JScrollPane tablePRLM = new JScrollPane(fePRTablePmd);
+
+													JList<String> listFePr = new JList<String>(tamanhoVetorCerto(regrasFe.getResultados()));
+													JScrollPane paneFePrPm = new JScrollPane(listFePr);
+													paneFePrPm.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+													paneFePrPm.setWheelScrollingEnabled(true);
+
+													JSplitPane splitFePm = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneFePrPm, tablePRLM);
+													splitFePm.setDividerLocation(100);
+													splitFePm.setVisible(true);
+
+													frame.add(splitFePm, BorderLayout.CENTER);
+													frame.setVisible(true);
+													
+												} else {
+													DefeitosPrIPlasma defPrFeIP = new DefeitosPrIPlasma(ER.getDados(), regrasFe.getLista());
+													defPrFeIP.defeitos();
+
+													JTable fePRTableIP = new JTable(defPrFeIP.getresultados(), defPrFeIP.getheader());
+													fePRTableIP.setEnabled(false);
+													JScrollPane tablePRFe = new JScrollPane(fePRTableIP);
+
+													JList<String> listIPPrFe = new JList<String> (tamanhoVetorCerto(regrasFe.getResultados()));
+													JScrollPane paneIpPrFe = new JScrollPane(listIPPrFe);
+													paneIpPrFe.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+													paneIpPrFe.setWheelScrollingEnabled(true);
+
+													JSplitPane splitFeIp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, paneIpPrFe, tablePRFe);
+													splitFeIp.setDividerLocation(100);
+													splitFeIp.setVisible(true);
+
+													frame.add(splitFeIp, BorderLayout.CENTER);
+													frame.setVisible(true);
+												}
 											}
 										});
 
-										panelFERP4linha.add(checkFEPR);
+										panelFERP5linha.add(checkFEPR);
 
 										feDefineParametros.add(panelFERP1linha);
 										feDefineParametros.add(panelFERP2linha);
 										feDefineParametros.add(panelFERP3linha);
-										feDefineParametros.add(panelFERP4linha);
+										feDefineParametros.add(panelFERP4linha);	
+										feDefineParametros.add(panelFERP5linha);
+
 
 									}
 								}
