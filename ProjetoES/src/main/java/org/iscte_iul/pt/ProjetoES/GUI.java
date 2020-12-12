@@ -12,8 +12,8 @@ import javax.swing.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
- * 
- * @author mdmpe
+ * Nesta classe fizemos e implemetamos a parte grafica do trabalho
+ * @author PedroAguas
  *
  */
 
