@@ -37,9 +37,8 @@ public class GUI {
 	private JTextField atfdEditorLogicFe;
 	private JTextField atfdEditorNumberFe;
 	private JTextField ferramentaFe;
-/**
- * 
- */
+
+	
 	public GUI() {
 		frame = new JFrame("Read Excel");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -561,10 +560,6 @@ public class GUI {
 			}
 		}
 		return result;
-	}
-
-	public static void main(String[] args) {
-		new GUI().open();
 	}
 
 }

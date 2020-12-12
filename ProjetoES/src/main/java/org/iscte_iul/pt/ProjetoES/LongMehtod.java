@@ -22,7 +22,7 @@ public class LongMehtod {
 
 	/**
 	 * 
-	 * @param dados     O Excel gerado no ExcelrReader
+	 * @param dados     O Excel gerado no ExcelReader
 	 * @param loc       Valor de input dados pelo utilizador
 	 * @param cyclo     Valor de input dados pelo utilizador
 	 * @param poperador primeiro operador dado pelo utilizador
@@ -79,6 +79,9 @@ public class LongMehtod {
 		return resultados;
 	}
 
+	
+	
+	
 	public void longMethodOrMenor() {
 		switch (soperador) {
 
