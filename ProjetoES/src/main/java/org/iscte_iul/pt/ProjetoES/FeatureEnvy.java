@@ -3,7 +3,7 @@ package org.iscte_iul.pt.ProjetoES;
 import java.util.ArrayList;
 
 /**
- * Nesta classe é feita a criação de defeitos usando um LongMethod personalizado
+ * Nesta classe é feita a criacao de defeitos usando um LongMethod personalizado
  * 
  * @author mdmpe
  *
@@ -42,12 +42,12 @@ public class FeatureEnvy {
 	}
 
 	/**
-	 *Usa switchs para representar todos os casos possiveis para a criação do codeSmell personalizado
-	 *Primeiro tem o switch maior para a ligação lógica: and ou or
-	 *Depois tem as combinações de maiores e maiores
-	 *Dentro deles tem um extract de um método que contém um for para percorrer os dados e um if para satisfazer as condições
+	 *Usa switchs para representar todos os casos possiveis para a criacao do codeSmell personalizado
+	 *Primeiro tem o switch maior para a ligação logica: and ou or
+	 *Depois tem as combinacoes de maiores e maiores
+	 *Dentro deles tem um extract de um metodo que contem um for para percorrer os dados e um if para satisfazer as condicoes
 	 * 
-	 * @return Os metodos IDs que satisfazem as condições
+	 * @return Os metodos IDs que satisfazem as condicoes
 	 */
 
 	public String[] operar() {
@@ -78,7 +78,9 @@ public class FeatureEnvy {
 		}
 		return resultados;
 	}
-
+	/**
+	 * metodo refratado usado no operar
+	 */
 	public void featureEnvyOrMenor() {
 		switch (soperador) {
 		case '<':
@@ -107,7 +109,9 @@ public class FeatureEnvy {
 			break;
 		}
 	}
-
+	/**
+	 * metodo refratado usado no operar
+	 */
 	public void featureEnvyOrMaior() {
 		switch (soperador) {
 
@@ -138,7 +142,9 @@ public class FeatureEnvy {
 			break;
 		}
 	}
-
+	/**
+	 * metodo refratado usado no operar
+	 */
 	public void featureEnvyAndMenor() {
 		switch (soperador) {
 		case '<':
@@ -168,7 +174,9 @@ public class FeatureEnvy {
 			break;
 		}
 	}
-
+	/**
+	 * metodo refratado usado no operar
+	 */
 	public void featureEnvyAndMaior() {
 		switch (soperador) {
 		case '<':

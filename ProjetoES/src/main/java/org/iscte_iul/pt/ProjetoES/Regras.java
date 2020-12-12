@@ -5,7 +5,7 @@ import static org.junit.Assume.assumeNoException;
 import java.util.ArrayList;
 /**
  * Nesta classe é escolhido a base de um novo defeito podendo ela ser LongMethod ou FeatureEnvy
- * @author mdmpe
+ * @author PedroAguas
  *
  */
 public class Regras {
@@ -42,10 +42,10 @@ public class Regras {
 	}
 	
 /**
- * 	quando o codeSmells é escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
+ * 	quando o codeSmells e escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
  * esse code construtor vai receber tudo do construtor desta classe exceto o nome
- * depois chama o método operar da nova classe
- * @throws Exception quando o input é inválido
+ * depois chama o metodo operar da nova classe
+ * @throws Exception quando o input é invalido
  * 
  */
 	public void cria() throws Exception  {

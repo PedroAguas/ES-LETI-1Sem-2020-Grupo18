@@ -24,9 +24,9 @@ public class isFeatureEnvy {
 		tratar();
 	}
 /**
- * Neste método é feita a analise de codeSmells pela regra do FeatureEnvy através de uma comparação com o input de dados do Excel com métricas tais como ATFD ou LAA
- * Neste método os limites ATFD ou LAA dados pelo utilizador são os limites pelos quais os dados devem passar para que possam passar para os resultados 
- * Se o ATFD ou o LAA forem menores que os inputs, o método tem um codeSmells
+ * Neste metodo é feita a analise de codeSmells pela regra do FeatureEnvy através de uma comparacao com o input de dados do Excel com metricas tais como ATFD ou LAA
+ * Neste metodo os limites ATFD ou LAA dados pelo utilizador sao os limites pelos quais os dados devem passar para que possam passar para os resultados 
+ * Se o ATFD ou o LAA forem menores que os inputs, o metodo tem um codeSmells
  * 
  * @return é devolvida uma lista de String com os resultados (i.e. se tem codeSmells retorna methodID 
  */

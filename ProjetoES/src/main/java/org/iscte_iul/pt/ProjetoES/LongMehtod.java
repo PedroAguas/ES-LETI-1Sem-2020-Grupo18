@@ -3,7 +3,7 @@ package org.iscte_iul.pt.ProjetoES;
 import java.util.ArrayList;
 
 /**
- * Nesta classe é feita a criação de defeitos usando um LongMethod personalizado
+ * Nesta classe e feita a criacao de defeitos usando um LongMethod personalizado
  * 
  * @author mdmpe
  *
@@ -42,11 +42,11 @@ public class LongMehtod {
 
 	/**
 	 *Usa switchs para representar todos os casos possiveis para a criação do codeSmell personalizado
-	 *Primeiro tem o switch maior para a ligação lógica: and ou or
+	 *Primeiro tem o switch maior para a ligação logica: and ou or
 	 *Depois tem as combinações de maiores e maiores
-	 *Dentro deles tem um extract de um método que contém um for para percorrer os dados e um if para satisfazer as condições
+	 *Dentro deles tem um extract de um metodo que contem um for para percorrer os dados e um if para satisfazer as condicoes
 	 * 
-	 * @return Os metodos IDs que satisfazem as condições
+	 * @return Os metodos IDs que satisfazem as condicoes
 	 */
 	public String[] operar() {
 		switch (logico) {
@@ -80,7 +80,9 @@ public class LongMehtod {
 	}
 
 	
-	
+	/**
+	 * metodo refratado usado no operar
+	 */
 	
 	public void longMethodOrMenor() {
 		switch (soperador) {
@@ -111,6 +113,10 @@ public class LongMehtod {
 			break;
 		}
 	}
+	
+	/**
+	 * metodo refratado usado no operar
+	 */
 
 	public void longMethodOrMaior() {
 		switch (soperador) {
@@ -142,6 +148,10 @@ public class LongMehtod {
 			break;
 		}
 	}
+	
+	/**
+	 * metodo refratado usado no operar
+	 */
 
 	public void longMethodAndMenor() {
 		switch (soperador) {
@@ -173,6 +183,10 @@ public class LongMehtod {
 		}
 	}
 
+	
+	/**
+	 * metodo refratado usado no operar
+	 */
 	public void longMethodAndSOper() {
 		switch (soperador) {
 		case '>':

@@ -26,10 +26,10 @@ public class isLongMethod {
 		tratar();
 	}
 /**
- * Neste método é feita a análise de codeSmells pela regra do LongMethod
- * através de uma comparação com o input de dados do Excel com métricas tais como LOC ou CYCLO
+ * Neste método e feita a analise de codeSmells pela regra do LongMethod
+ * atraves de uma comparacao com o input de dados do Excel com metricas tais como LOC ou CYCLO
  * Os limites LOC ou CYCLO dados pelo utilizado quer vem na forma de String e que quando usando o parseInt
- * Se o LOC ou o CYCLO forem menor que o input, o método tem um codeSmells
+ * Se o LOC ou o CYCLO forem menor que o input, o metodo tem um codeSmells
  * 
  * @return vector de strings
  */

@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 /**
- * neste método é feita a leitura de um ficherio.xls e guardar os seus valores
+ * neste metodo e feita a leitura de um ficherio.xls e guardar os seus valores
  * @author mdmpe
  *
  */
@@ -19,7 +19,7 @@ public class ExcelReader {
 /**
  * 
  * @param PATH	o caminho para o ficheiro
- * @throws InvalidFormatException quando o caminho não é válido
+ * @throws InvalidFormatException quando o caminho nao e valido
  * @throws IOException quando naõ encontra ficheiro
  */
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException {
@@ -27,13 +27,13 @@ public class ExcelReader {
 		StartRead();
 	}
 /**
- * é criado um uma sheet a partir do ficheiro e também uma data formater para depois guardar o ficheiro
- * a seguir é criado um iterador para percorrer as linhas do ficheiro
- * de seguida é criado um iterador para as celas para que tanto coluna como linha sejam lidos
- * se as celas forem da primeira linha elas são guardadas no vetor headers 
- * as restantes celas, ordenadas, são guardadas na matriz dados
- * @throws IOException	quando não encontra o caminho
- * @throws InvalidFormatException quando o fromato do fichrio não é válido
+ * E criado um uma sheet a partir do ficheiro e também uma data formater para depois guardar o ficheiro
+ * a seguir e criado um iterador para percorrer as linhas do ficheiro
+ * de seguida e criado um iterador para as celas para que tanto coluna como linha sejam lidos
+ * se as celas forem da primeira linha elas sao guardadas no vetor headers 
+ * as restantes celas, ordenadas, sao guardadas na matriz dados
+ * @throws IOException	quando nao encontra o caminho
+ * @throws InvalidFormatException quando o fromato do ficheiro nao e valido
  */
 	public void StartRead() throws IOException, InvalidFormatException {
 
