@@ -1,8 +1,8 @@
 package org.iscte_iul.pt.ProjetoES;
 import java.util.ArrayList;
 /**
- * Nesta classe utilizamos os dados do excell e das funções personalidades para obter os defeitos
- * @author mdmpe
+ * Nesta classe utilizamos os dados do excel e das funções personalidades para obter os defeitos
+ * @author jicms
  *
  */
 public class DefeitosPrPMD {
@@ -18,11 +18,11 @@ public class DefeitosPrPMD {
                                           { "ADCI", Integer.toString(ADCI) }, 
                                           { "ADII", Integer.toString(ADII) } };
         private ArrayList<Boolean> verdades = new ArrayList<Boolean>();
-  /**
-   *       
-   * @param dados do excell
-   * @param verdades informação obtida pelas funções personalidades
-   */
+/**
+ *       
+ * @param dados do excel
+ * @param verdades informação obtida pelas funções personalidades
+ */
         public DefeitosPrPMD(String[][] dados, ArrayList<Boolean> verdades) {
             this.dados = dados;
             this.verdades=verdades;
@@ -30,9 +30,9 @@ public class DefeitosPrPMD {
 /**
  * Neste metodo utilizando os dados, PMD, e o arraylist das verdades
  * Se ambos forem true, passa a existir um DCI
- * Se o PMD for falso e os dados true existe um DII
- * Se ambos forem falso cria-se um ADII
- * Se nehum deste aconbtecer passa a existir mais um ADDII
+ * Se as verdades forem false e o PMD true, existe um DII
+ * Se ambos forem falso, cria-se um ADII
+ * Se nenhum deste acontecer, passa a existir mais um ADDII
  * 
  */
 

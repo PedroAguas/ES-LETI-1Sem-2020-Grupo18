@@ -1,6 +1,10 @@
 package org.iscte_iul.pt.ProjetoES;
 import java.util.ArrayList;
-
+/**
+ * Nesta classe utilizamos os dados do excel e das funções personalidades para obter os defeitos
+ * @author jicms
+ *
+ */
 public class DefeitosPrIPlasma {
 	private String[][] dados;
     // private String[][] resultados;
@@ -15,13 +19,26 @@ public class DefeitosPrIPlasma {
                                           { "ADII", Integer.toString(ADII) } };
         private ArrayList<Boolean> verdades = new ArrayList<Boolean>();
         
+        
+/**
+ *       
+ * @param dados do excel
+ * @param verdades informação obtida pelas funções personalidades
+ */
         public DefeitosPrIPlasma(String[][] dados, ArrayList<Boolean> verdades) {
             this.dados = dados;
             this.verdades=verdades;
         }
-
+       
+/**
+ * Neste metodo utilizando os dados, iPlasma, e o arraylist das verdades
+ * Se ambos forem true, passa a existir um DCI
+ * Se as verdades forem false e o iPlasma true, existe um DII
+ * Se ambos forem falso, cria-se um ADII
+ * Se nenhum deste acontecer, passa a existir mais um ADDII
+ * 
+ */
         public void defeitos() {
-         	System.out.println(verdades.size()+" primeiro: " + verdades.get(verdades.size()-1) + " ajdsbuas "+ dados.length+ " primeiro: " + dados[dados.length-2][10]);
             for (int i = 0; i < dados.length; i++) {
                 if (verdades.get(i) == true && Boolean.parseBoolean(dados[i][9]) == true) {
                     DCI++;

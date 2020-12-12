@@ -1,5 +1,9 @@
 package org.iscte_iul.pt.ProjetoES;
-
+/**
+ * Nesta classe utilizamos os dados do excel para criar os defeitos
+ * @author jicms
+ *
+ */
 public class Defeitos_Iplasma {
 		private String[][] dados;
 	// private String[][] resultados;
@@ -12,11 +16,24 @@ public class Defeitos_Iplasma {
 										  { "DII", Integer.toString(DII) },
 										  { "ADCI", Integer.toString(ADCI) }, 
 										  { "ADII", Integer.toString(ADII) } };
+		
+/**
+ *   
+ * @param dados do excel
+ */
 
 		public Defeitos_Iplasma(String[][] dados) {
 			this.dados = dados;
 		}
 
+/**
+ * Neste metodo utilizando os dados e iPlasma
+ * Se ambos forem true, passa a existir um DCI
+ * Se os dados forem false e o iPlasma true, existe um DII
+ * Se ambos forem false, cria-se um ADII
+ * Se nenhum deste acontecer, passa a existir mais um ADDII
+ * 
+ */
 		public void defeitos() {
 			for (int i = 0; i < dados.length; i++) {
 				if (Boolean.parseBoolean(dados[i][8]) == true && Boolean.parseBoolean(dados[i][9]) == true) {
