@@ -19,8 +19,8 @@ public class ExcelReader {
 /**
  * 
  * @param PATH	o caminho para o ficheiro
- * @throws InvalidFormatException
- * @throws IOException
+ * @throws InvalidFormatException quando o caminho não é válido
+ * @throws IOException quando naõ encontra ficheiro
  */
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException {
 		this.PATH = PATH;
@@ -32,8 +32,8 @@ public class ExcelReader {
  * de seguida é criado um iterador para as celas para que tanto coluna como linha sejam lidos
  * se as celas forem da primeira linha elas são guardadas no vetor headers 
  * as restantes celas, ordenadas, são guardadas na matriz dados
- * @throws IOException
- * @throws InvalidFormatException
+ * @throws IOException	quando não encontra o caminho
+ * @throws InvalidFormatException quando o fromato do fichrio não é válido
  */
 	public void StartRead() throws IOException, InvalidFormatException {
 

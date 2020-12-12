@@ -45,7 +45,7 @@ public class Regras {
  * 	quando o codeSmells é escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
  * esse code construtor vai receber tudo do construtor desta classe exceto o nome
  * depois chama o método operar da nova classe
- * @throws Exception 
+ * @throws Exception quando o input é inválido
  * 
  */
 	public void cria() throws Exception  {
