@@ -41,13 +41,12 @@ public class LongMehtod {
 	}
 
 	/**
-	 * Utiliza set de switch, o primeiro para lógicos, e os outros dois dentro de si
-	 * e deles mesmo Compara os dois atributos utilizando os operadores. se a
-	 * comparação for bem-sucedida adiciona o methodID a lista de resultados e
-	 * adiciona TRUE a lista quando a comparação não é bem-sucedida adiciona FALSE a
-	 * lista
+	 *Usa switchs para representar todos os casos possiveis para a criação do codeSmell personalizado
+	 *Primeiro tem o switch maior para a ligação lógica: and ou or
+	 *Depois tem as combinações de maiores e maiores
+	 *Dentro deles tem um extract de um método que contém um for para percorrer os dados e um if para satisfazer as condições
 	 * 
-	 * @return
+	 * @return Os metodos IDs que satisfazem as condições
 	 */
 	public String[] operar() {
 		switch (logico) {
