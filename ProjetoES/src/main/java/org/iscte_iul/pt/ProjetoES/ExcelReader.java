@@ -66,9 +66,6 @@ public class ExcelReader {
 
 	}
 
-	public String getSampleXlsxFilePath() {
-		return PATH;
-	}
 
 	public String[][] getDados() {
 		return dados;
@@ -77,16 +74,5 @@ public class ExcelReader {
 	public String[] getHeader() {
 		return headers;
 	}
-
-	/*public String[] getColunaInicial() {
-		String[] temp = new String[12];
-		for (int k = 0; k < 12; k++) {
-
-			temp[k] = dados[0][k];
-
-		}
-
-		return temp;
-	}*/
 
 }
