@@ -25,7 +25,7 @@ public class DefeitosPrPMDTest {
 	}
 
 	@Test
-	void testeDefPR() {
+	void testeDefPR() throws Exception {
 		Regras regras = new Regras(dadosI, '>', '>', "and", "31", "0.2", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();

@@ -49,7 +49,7 @@ public class GUI {
 		frame.setSize(700, 450);
 	}
 
-	private void configurationFrame() {
+	public void configurationFrame() {
 
 		JPanel panelButton = new JPanel();
 		panelButton.setLayout(new GridLayout(1, 3));
@@ -318,7 +318,12 @@ public class GUI {
 												pr.dispose();
 												
 												Regras regrasLM = new Regras(ER.getDados(), locEditorLogic.getText().charAt(0), cycloEditorLogic.getText().charAt(0), editorAndOr.getText().trim(), locEditorNumber.getText().trim(), cycloEditorNumber.getText().trim(), "LongMethod");
-												regrasLM.cria();
+												try {
+													regrasLM.cria();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
 												
 												if (ferramenta.getText().trim().equals("PMD") ){
 													
@@ -424,7 +429,12 @@ public class GUI {
 												pr.dispose();
 												
 												Regras regrasFe = new Regras(ER.getDados(), atfdEditorLogicFe.getText().charAt(0), laaEditorLogicFe.getText().charAt(0), editorAndOrFe.getText().trim(), atfdEditorNumberFe.getText().trim(), laaloEditorNumberFe.getText().trim(), "FeatureEnvy");
-												regrasFe.cria();
+												try {
+													regrasFe.cria();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
 												
 												if (ferramentaFe.getText().trim().equals("PMD") ){
 													DefeitosPrPMD defPrFe = new DefeitosPrPMD(ER.getDados(), regrasFe.getLista());

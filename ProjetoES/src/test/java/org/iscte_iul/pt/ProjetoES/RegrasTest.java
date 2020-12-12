@@ -19,13 +19,11 @@ class RegrasTest {
 
 	}
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
 
-	// teste do LongMethod AND
+
+
 	@Test
-	void testLmRegrasmmA() {
+	void testLmRegrasmmA() throws Exception {
 		Regras regras = new Regras(dados, '<', '<', "and", "31", "22", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -59,7 +57,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testeLmRegrasMMA() {
+	void testeLmRegrasMMA() throws Exception {
 		Regras regras = new Regras(dados, '>', '>', "and", "31", "22", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -94,7 +92,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testLmRegrasmMA() {
+	void testLmRegrasmMA() throws Exception {
 		Regras regras = new Regras(dados, '<', '>', "and", "100", "11", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -127,7 +125,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testLmRegrasMmA() {
+	void testLmRegrasMmA() throws Exception {
 		Regras regras = new Regras(dados, '>', '<', "and", "27", "105", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -162,7 +160,7 @@ class RegrasTest {
 
 	// teste do LongMethod OR
 	@Test
-	void testLmRegrasmmO() {
+	void testLmRegrasmmO() throws Exception {
 		Regras regras = new Regras(dados, '<', '<', "or", "31", "22", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -195,7 +193,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testeLmRegrasMMO() {
+	void testeLmRegrasMMO() throws Exception {
 		Regras regras = new Regras(dados, '>', '>', "or", "150", "200", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -230,7 +228,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testLmRegrasmMO() {
+	void testLmRegrasmMO() throws Exception {
 		Regras regras = new Regras(dados, '<', '>', "or", "40", "366", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -264,7 +262,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testLmRegrasMmO() {
+	void testLmRegrasMmO() throws Exception {
 		Regras regras = new Regras(dados, '>', '<', "or", "200", "10", "LongMethod");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -300,7 +298,7 @@ class RegrasTest {
 	// FEFEFEFE
 
 	@Test
-	void testFeRegrasmmA() {
+	void testFeRegrasmmA() throws Exception {
 		Regras regras = new Regras(dados, '<', '<', "and", "31", "0.2", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -332,7 +330,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testeFeRegrasMMA() {
+	void testeFeRegrasMMA() throws Exception {
 		Regras regras = new Regras(dados, '>', '>', "and", "31", "0.2", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -365,7 +363,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testFeRegrasmMA() {
+	void testFeRegrasmMA() throws Exception {
 		Regras regras = new Regras(dados, '<', '>', "and", "100", "0.2", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -397,7 +395,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testFeRegrasMmA() {
+	void testFeRegrasMmA() throws Exception {
 		Regras regras = new Regras(dados, '>', '<', "and", "71", "0.3", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -431,7 +429,7 @@ class RegrasTest {
 	// ORRORORO
 
 	@Test
-	void testFeRegrasmmO() {
+	void testFeRegrasmmO() throws Exception {
 		Regras regras = new Regras(dados, '<', '<', "or", "27", "0.18", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -463,7 +461,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testeFeRegrasMMO() {
+	void testeFeRegrasMMO() throws Exception {
 		Regras regras = new Regras(dados, '>', '>', "or", "50", "0.25", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -496,7 +494,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testFeRegrasmMO() {
+	void testFeRegrasmMO() throws Exception {
 		Regras regras = new Regras(dados, '<', '>', "or", "30", "0.3", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -528,7 +526,7 @@ class RegrasTest {
 	}
 
 	@Test
-	void testFeRegrasMmO() {
+	void testFeRegrasMmO() throws Exception {
 		Regras regras = new Regras(dados, '>', '<', "or", "100", "0.2", "FeatureEnvy");
 		regras.cria();
 		ArrayList<Boolean> lista = regras.getLista();
@@ -558,5 +556,10 @@ class RegrasTest {
 		assertEquals("145", xxx[2][1]);
 		assertEquals("135", xxx[3][1]);
 	}
-
+	
+	@Test
+	void testFeRegraserro() throws Exception {
+		Regras regras = new Regras(dados, '>', '<', "or", "100", "0.2", "asdbyuius");
+		
+	}	
 }

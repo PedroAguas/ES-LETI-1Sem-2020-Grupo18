@@ -48,7 +48,7 @@ public class Regras {
  * @throws Exception 
  * 
  */
-	public void cria()  {
+	public void cria() throws Exception  {
 		if(codeSmell=="LongMethod") {
 			LongMehtod lm = new LongMehtod(dados, pAtributo, sAtributo, pOperador, sOperador, logico);
 			resultados =lm.operar();
@@ -58,6 +58,8 @@ public class Regras {
 			FeatureEnvy fe = new FeatureEnvy(dados, pAtributo, sAtributo, pOperador, sOperador, logico);
 			resultados=fe.operar();
 			lista.addAll(fe.getLista());
+		}else {
+			throw new Exception("Ponha um válido");
 		}
 		
 	}
