@@ -2,21 +2,21 @@ package org.iscte_iul.pt.ProjetoES;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 /**
  * 
  * @author mdmpe
  *
  */
+
 public class GUI {
 	private JFrame frame;
 	private ExcelReader ER;

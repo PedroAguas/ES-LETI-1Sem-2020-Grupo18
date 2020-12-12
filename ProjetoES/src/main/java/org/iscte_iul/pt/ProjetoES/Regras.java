@@ -38,6 +38,7 @@ public class Regras {
 		this.codeSmell = codeSmell;
 		
 	}
+	
 /**
  * 	quando o codeSmells é escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
  * esse code construtor vai receber tudo do construtor desta classe exceto o nome
