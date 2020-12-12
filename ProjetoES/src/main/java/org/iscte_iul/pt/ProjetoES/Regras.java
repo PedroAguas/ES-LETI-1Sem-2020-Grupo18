@@ -1,7 +1,11 @@
 package org.iscte_iul.pt.ProjetoES;
 
 import java.util.ArrayList;
-
+/**
+ * Nesta classe é escolhido a base de um novo defeito podendo ela ser LongMethod ou FeatureEnvy
+ * @author mdmpe
+ *
+ */
 public class Regras {
 	
 	private char pOperador;
@@ -13,7 +17,16 @@ public class Regras {
 	private String[] resultados=new String[500];
 	private String[][] dados;
 	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
-	
+/**
+ * 
+ * @param dados	dados do Excel do ExcelrReader matriz de String
+ * @param pOperador	char primeiro operador 
+ * @param sOperador	char segundo operador
+ * @param logico	operador logico String
+ * @param pAtributo	primeiro atributo String
+ * @param sAtributo	segundo atributo String
+ * @param codeSmell	nome do codeSmells a ser escolhido String
+ */
 	public Regras(String[][] dados, char pOperador, char sOperador, String logico, String pAtributo, String sAtributo, String codeSmell) {
 		
 		this.dados = dados;
@@ -25,7 +38,12 @@ public class Regras {
 		this.codeSmell = codeSmell;
 		
 	}
-	
+/**
+ * 	quando o codeSmells é escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
+ * esse code construtor vai receber tudo do construtor desta classe exceto o nome
+ * depois chama o método operar da nova classe
+ * 
+ */
 	public void cria() {
 		if(codeSmell=="LongMethod") {
 			LongMehtod lm = new LongMehtod(dados, pAtributo, sAtributo, pOperador, sOperador, logico);

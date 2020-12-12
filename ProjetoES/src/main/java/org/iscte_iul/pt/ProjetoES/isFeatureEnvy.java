@@ -1,19 +1,35 @@
 package org.iscte_iul.pt.ProjetoES;
-
+/**
+ * Classe que cria o codsmell isFeatureEnvy
+ * data
+ * @author mdmpe
+ *
+ */
 public class isFeatureEnvy {
 
 	private String[][] dados;
 	private String atfd;
 	private String laa;
 	private String[] resultados;
-
+/**
+ * 
+ * @param dados O Excel gerado no ExcelReader
+ * @param atfd	Valor de input dados pelo utilizador
+ * @param laa	Valor de input dados pelo utilizador
+ */
 	public isFeatureEnvy(String[][] dados, String atfd, String laa) {
 		this.dados = dados;
 		this.atfd = atfd;
 		this.laa = laa;
 		tratar();
 	}
-
+/**
+ * Neste método é feita a analise de codeSmells pela regra do FeatureEnvy através de uma comparação com o input de dados do Excel com métricas tais como ATFD ou LAA
+ * Neste método os limites ATFD ou LAA dados pelo utilizador são os limites pelos quais os dados devem passar para que possam passar para os resultados 
+ * Se o ATFD ou o LAA forem menores que os inputs, o método tem um codeSmells
+ * 
+ * @return é devolvida uma lista de String com os resultados (i.e. se tem codeSmells retorna methodID 
+ */
 	public String[] tratar() {
 		resultados = new String[422];
 		System.out.println(resultados.length);

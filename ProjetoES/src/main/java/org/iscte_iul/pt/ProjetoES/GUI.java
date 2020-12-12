@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
+/**
+ * 
+ * @author mdmpe
+ *
+ */
 public class GUI {
 	private JFrame frame;
 	private ExcelReader ER;
@@ -33,7 +37,9 @@ public class GUI {
 	private JTextField atfdEditorLogicFe;
 	private JTextField atfdEditorNumberFe;
 	private JTextField ferramentaFe;
-
+/**
+ * 
+ */
 	public GUI() {
 		frame = new JFrame("Read Excel");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

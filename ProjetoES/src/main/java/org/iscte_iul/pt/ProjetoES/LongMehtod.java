@@ -1,7 +1,11 @@
 package org.iscte_iul.pt.ProjetoES;
 
 import java.util.ArrayList;
-
+/**
+ * Nesta classe é feita a criação de defeitos usando um LongMethod personalizado
+ * @author mdmpe
+ *
+ */
 public class LongMehtod {
 
 	private String[][] dados;
@@ -13,7 +17,15 @@ public class LongMehtod {
 	private String logico;
 	private int j = 0;
 	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
-
+/**
+ * 
+ * @param dados	O Excel gerado no ExcelrReader
+ * @param loc	Valor de input dados pelo utilizador
+ * @param cyclo	Valor de input dados pelo utilizador
+ * @param poperador	primeiro operador dado pelo utilizador
+ * @param soperador	segundo operador dado pelo utilizador
+ * @param logico operador logico das operações entre os outros operadores dado pelo utilizador
+ */
 	public LongMehtod(String[][] dados, String loc, String cyclo, char poperador, char soperador, String logico) {
 
 		this.dados = dados;
@@ -23,7 +35,13 @@ public class LongMehtod {
 		this.logico = logico;
 		this.soperador = soperador;
 	}
-
+/**
+ * Utiliza set de switch, o primeiro para lógicos, e os outros dois dentro de si e deles mesmo
+ * Compara os dois atributos utilizando os operadores.
+ * se a comparação for bem-sucedida adiciona o methodID a lista de resultados e adiciona TRUE a lista
+ * quando a comparação não é bem-sucedida adiciona FALSE a lista
+ * @return
+ */
 	public String[] operar() {
 		switch (logico) {
 

@@ -1,7 +1,12 @@
 package org.iscte_iul.pt.ProjetoES;
 
 import java.util.ArrayList;
-
+/**
+ * Nesta classe é feita a criação de defeitos usando um LongMethod personalizado
+ * 
+ * @author mdmpe
+ *
+ */
 public class FeatureEnvy {
 
 	private String[][] dados;
@@ -13,7 +18,15 @@ public class FeatureEnvy {
 	private String logico;
 	private int j = 0;
 	private ArrayList<Boolean> lista = new ArrayList<Boolean>();
-
+/**
+ * 
+ * @param dados O Excel gerado no ExcelrReader
+ * @param atfd	Valor de input dados pelo utilizador
+ * @param laa	Valor de input dados pelo utilizador
+ * @param poperador	primeiro operador dado pelo utilizador
+ * @param soperador	segundo operador dado pelo utilizador
+ * @param logico	operador logico das operações entre os outros operadores dado pelo utilizador
+ */
 	public FeatureEnvy(String[][] dados, String atfd, String laa, char poperador, char soperador, String logico) {
 
 		this.atfd = atfd;
@@ -24,7 +37,14 @@ public class FeatureEnvy {
 		this.dados = dados;
 
 	}
-
+/**
+ * Utiliza set de switch, o primeiro para lógicos, e os outros dois dentro de si e deles mesmo
+ * Compara os dois atributos utilizando os operadores.
+ * se a comparação for bem-sucedida adiciona o methodID a lista de resultados e adiciona TRUE a lista
+ * quando a comparação não é bem-sucedida adiciona false a lista
+ * 
+ * @return
+ */
 	public String[] operar() {
 		switch (logico) {
 

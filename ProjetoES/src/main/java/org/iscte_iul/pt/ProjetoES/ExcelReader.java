@@ -6,18 +6,35 @@ import org.apache.poi.ss.usermodel.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
-
+/**
+ * neste método é feita a leitura de um ficherio.xls e guardar os seus valores
+ * @author mdmpe
+ *
+ */
 public class ExcelReader {
 
 	private String PATH;
 	private String dados[][];
 	private String[] headers= new String[12];
-
+/**
+ * 
+ * @param PATH	o caminho para o ficheiro
+ * @throws InvalidFormatException
+ * @throws IOException
+ */
 	public ExcelReader(String PATH) throws InvalidFormatException, IOException {
 		this.PATH = PATH;
 		StartRead();
 	}
-
+/**
+ * é criado um uma sheet a partir do ficheiro e também uma data formater para depois guardar o ficheiro
+ * a seguir é criado um iterador para percorrer as linhas do ficheiro
+ * de seguida é criado um iterador para as celas para que tanto coluna como linha sejam lidos
+ * se as celas forem da primeira linha elas são guardadas no vetor headers 
+ * as restantes celas, ordenadas, são guardadas na matriz dados
+ * @throws IOException
+ * @throws InvalidFormatException
+ */
 	public void StartRead() throws IOException, InvalidFormatException {
 
 		Workbook workbook = WorkbookFactory.create(new File(PATH));
