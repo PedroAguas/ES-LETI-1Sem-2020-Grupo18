@@ -50,8 +50,6 @@ public class Defeitos_Iplasma {
 		resultados[2][1] = Integer.toString(ADCI);
 		resultados[3][1] = Integer.toString(ADII);
 
-		System.out.println("DCI " + DCI + " DII " + DII + " DCI " + ADCI + " ADII " + ADII);
-
 	}
 
 	public String[][] getresultados() {

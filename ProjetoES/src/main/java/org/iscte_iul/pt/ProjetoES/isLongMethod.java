@@ -37,8 +37,8 @@ public class isLongMethod {
 		resultados = new String[422];
 		System.out.println(resultados.length);
 		int j = 0;
-		for (int i = 1; i < dados.length; i++) {
-			if ((i != 0 && Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim())) && i != 0
+		for (int i = 0; i < dados.length; i++) {
+			if (( Integer.parseInt(dados[i][4]) > Integer.parseInt(loc.trim())) 
 					&& Integer.parseInt(dados[i][5]) > Integer.parseInt(cyclo.trim())) {
 				resultados[j] = dados[i][0];
 				j++;

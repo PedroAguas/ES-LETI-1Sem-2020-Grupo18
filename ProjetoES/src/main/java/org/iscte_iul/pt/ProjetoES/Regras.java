@@ -1,5 +1,7 @@
 package org.iscte_iul.pt.ProjetoES;
 
+import static org.junit.Assume.assumeNoException;
+
 import java.util.ArrayList;
 /**
  * Nesta classe é escolhido a base de um novo defeito podendo ela ser LongMethod ou FeatureEnvy
@@ -43,9 +45,10 @@ public class Regras {
  * 	quando o codeSmells é escolhido criasse um construtor ou da classe LongMethod ou FeatureEnvy
  * esse code construtor vai receber tudo do construtor desta classe exceto o nome
  * depois chama o método operar da nova classe
+ * @throws Exception 
  * 
  */
-	public void cria() {
+	public void cria()  {
 		if(codeSmell=="LongMethod") {
 			LongMehtod lm = new LongMehtod(dados, pAtributo, sAtributo, pOperador, sOperador, logico);
 			resultados =lm.operar();
