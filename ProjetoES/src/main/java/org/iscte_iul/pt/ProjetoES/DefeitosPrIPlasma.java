@@ -21,6 +21,7 @@ public class DefeitosPrIPlasma {
         }
 
         public void defeitos() {
+         	System.out.println(verdades.size()+" primeiro: " + verdades.get(verdades.size()-1) + " ajdsbuas "+ dados.length+ " primeiro: " + dados[dados.length-2][10]);
             for (int i = 0; i < dados.length; i++) {
                 if (verdades.get(i) == true && Boolean.parseBoolean(dados[i][9]) == true) {
                     DCI++;
